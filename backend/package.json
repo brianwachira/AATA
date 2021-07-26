@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "graphql api for access afya analytics dashboard",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "dev": "ts-node-dev index.ts",
+    "lint": "eslint --ext .ts ."
+  },
+  "author": "brianwachira",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.31.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "apollo-server": "^3.0.2",
+    "graphql": "^15.5.1"
+  }
+}
