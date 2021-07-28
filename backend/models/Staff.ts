@@ -38,13 +38,13 @@ const staffSchema = new Schema({
     branch:[
         {
             type: Schema.Types.ObjectId,
-            ref: 'Clinic'
+            ref: 'Clinics'
         }
     ],
     consultations:[
         {
             type: Schema.Types.ObjectId,
-            ref: 'Consultation'
+            ref: 'Consultations'
         }
     ]
 }, {timestamps: true});
