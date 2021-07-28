@@ -93,6 +93,13 @@ export interface diagnosis extends timeStamps {
     description : string;
     remedy : objectReference[];
 }
+
+export interface remedies extends timeStamps {
+    id: string,
+    title: string,
+    description: string,
+    diagnosis: objectReference[];
+}
 export interface consultation extends timeStamps {
     id: string;
     patientID: string;
@@ -131,5 +138,6 @@ export type NewGuardianEntry = Omit<guardian, 'id'>;
 export type NewNextOfKinEntry = Omit<nextofkin, 'id'>;
 export type NewConsultationEntry = Omit<consultation, 'id'>;
 export type NewDiagnosisEntry = Omit<diagnosis, 'id'>;
+export type NewRemediesEntry = Omit<remedies, 'id'>;
 export type NewConsultationRatingEntry = Omit<consultationRating, 'id'>;
 export type NewIssueEntry = Omit<issues, 'id'>;
