@@ -13,7 +13,8 @@ const clinicSchema = new Schema({
         required: true
     },
     createdBy: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Admins',
         required: true
     },
     staff:[
