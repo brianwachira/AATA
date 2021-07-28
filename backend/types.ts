@@ -113,7 +113,14 @@ export interface payments extends timeStamps {
     branchID: string;
     amount: number;
 }
+ export interface issues extends timeStamps {
+    id: string;
+    title: string;
+    description: string;
+    branchID: string;
+    filedBy: string;
 
+ }
 
 
 export type NewDispatchOfficerEntry = Omit<BasePerson, 'id'>;
@@ -125,3 +132,4 @@ export type NewNextOfKinEntry = Omit<nextofkin, 'id'>;
 export type NewConsultationEntry = Omit<consultation, 'id'>;
 export type NewDiagnosisEntry = Omit<diagnosis, 'id'>;
 export type NewConsultationRatingEntry = Omit<consultationRating, 'id'>;
+export type NewIssueEntry = Omit<issues, 'id'>;
