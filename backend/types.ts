@@ -141,3 +141,4 @@ export type NewDiagnosisEntry = Omit<diagnosis, 'id'>;
 export type NewRemediesEntry = Omit<remedies, 'id'>;
 export type NewConsultationRatingEntry = Omit<consultationRating, 'id'>;
 export type NewIssueEntry = Omit<issues, 'id'>;
+export type NewAdminEntry = Omit<admin, 'id'>;
