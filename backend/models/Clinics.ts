@@ -35,6 +35,6 @@ clinicSchema.plugin(uniqueValidator);
 //     return obj;
 // };
 
-const Clinic = mongoose.model<NewClinicEntry>('Clinics', clinicSchema);
+const Clinics = mongoose.model<NewClinicEntry>('Clinics', clinicSchema);
 
-module.exports = Clinic;
+export default Clinics;
