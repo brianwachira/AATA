@@ -102,3 +102,4 @@ export interface payments extends timeStamps {
 export type NewDispatchOfficerEntry = Omit<BasePerson, 'id'>;
 export type NewClinicEntry = Omit<clinic, 'id'>;
 export type NewStaffEntry = Omit<staff, 'id'>;
+export type PatientEntry = Omit<patient, 'id'>;
