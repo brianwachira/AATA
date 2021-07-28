@@ -69,8 +69,12 @@ export interface staff extends BasePerson,ContactInfo, staffType,timeStamps{
 
 export interface patient extends BasePerson, timeStamps{
     consultations: objectReference[];
+    guardians?: objectReference[];
+    nextOfKin: objectReference[];
 }
-export interface guardianorkin extends BasePerson, ContactInfo, timeStamps{
+
+export interface guardian extends BasePerson, ContactInfo, timeStamps{
+    relationship: string;
     patients: objectReference[];   
 }
 export interface diagnosis extends timeStamps {
