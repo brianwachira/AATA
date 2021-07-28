@@ -117,3 +117,4 @@ export type NewClinicEntry = Omit<clinic, 'id'>;
 export type NewStaffEntry = Omit<staff, 'id'>;
 export type NewPatientEntry = Omit<patient, 'id'>;
 export type NewGuardianEntry = Omit<guardian, 'id'>;
+export type NewNextOfKinEntry = Omit<nextofkin, 'id'>;
