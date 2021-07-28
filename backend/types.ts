@@ -9,10 +9,11 @@ interface timeStamps{
     updatedAt?: Date;
 }
 interface BasePerson{
+    id: string;
     firstName: string;
     lastName: string;
     DOB: Date;
-    Gender: Gender;
+    gender: Gender;
 }
 
 interface ContactInfo{
@@ -31,7 +32,12 @@ interface objectReference{
 interface staffType{
     staffType: string
 }
-export interface Unormal extends BasePerson, ContactInfo, Credentials, timeStamps{
+
+// Define BasePerson without id
+export type newPersonEntry = Omit<BasePerson, 'id'>;
+
+//
+export interface Unormal extends newPersonEntry, ContactInfo, Credentials, timeStamps{
     _id?: string;
     __v?: string;
     id?: string;
@@ -46,7 +52,9 @@ export interface dispatchOfficer extends BasePerson, ContactInfo, Credentials, t
     assessments? : objectReference[];
 }
 
+//clinic
 export interface clinic extends timeStamps{
+    id: string;
     name: string;
     location: string;
     staff?: objectReference[];
@@ -90,3 +98,7 @@ export interface payments extends timeStamps {
 }
 
 
+
+export type NewDispatchOfficerEntry = Omit<BasePerson, 'id'>;
+export type NewClinicEntry = Omit<clinic, 'id'>;
+export type NewStaffEntry = Omit<staff, 'id'>;
