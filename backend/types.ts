@@ -63,7 +63,9 @@ export interface clinic extends timeStamps{
 
 export interface staff extends BasePerson,ContactInfo, staffType,timeStamps{
     branch: objectReference[];
-    consultations: objectReference[];
+    consultations?: objectReference[];
+    nextOfKin: objectReference[];
+
 
 }
 
@@ -77,6 +79,13 @@ export interface guardian extends BasePerson, ContactInfo, timeStamps{
     relationship: string;
     patients: objectReference[];   
 }
+
+export interface nextofkin extends BasePerson, ContactInfo, timeStamps{
+    relationship: string;
+    patients: objectReference[];   
+}
+
+
 export interface diagnosis extends timeStamps {
     code : string;
     name? : string;
@@ -106,4 +115,5 @@ export interface payments extends timeStamps {
 export type NewDispatchOfficerEntry = Omit<BasePerson, 'id'>;
 export type NewClinicEntry = Omit<clinic, 'id'>;
 export type NewStaffEntry = Omit<staff, 'id'>;
-export type PatientEntry = Omit<patient, 'id'>;
+export type NewPatientEntry = Omit<patient, 'id'>;
+export type GuardianEntry = Omit<guardian, 'id'>;
