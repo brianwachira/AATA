@@ -22,15 +22,19 @@ const guardianSchema = new Schema({
     },
     nationalID: {
         type: String,
-        required: false
+        required: true
     },
     phoneNo: {
         type: String,
-        required: false
+        required: true
     },
     email: {
         type: String,
         required: false
+    },
+    relationship: {
+        type: String,
+        required: true
     },
     patients: [
         {
