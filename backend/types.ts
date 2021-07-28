@@ -91,7 +91,7 @@ export interface diagnosis extends timeStamps {
     code : string;
     name? : string;
     description : string;
-    remedy : string;
+    remedy : objectReference[];
 }
 export interface consultation extends timeStamps {
     id: string;
@@ -122,4 +122,6 @@ export type NewStaffEntry = Omit<staff, 'id'>;
 export type NewPatientEntry = Omit<patient, 'id'>;
 export type NewGuardianEntry = Omit<guardian, 'id'>;
 export type NewNextOfKinEntry = Omit<nextofkin, 'id'>;
+export type NewConsultationEntry = Omit<consultation, 'id'>;
+export type NewDiagnosisEntry = Omit<diagnosis, 'id'>;
 export type NewConsultationRatingEntry = Omit<consultationRating, 'id'>;
