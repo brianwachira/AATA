@@ -15,7 +15,7 @@ const dispatchOfficerSchema = new Schema({
         type: Date,
         required: true
     },
-    Gender: {
+    gender: {
         type: String,
         required: true
     },
@@ -34,7 +34,7 @@ const dispatchOfficerSchema = new Schema({
     assessments: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Assessment'
+            ref: 'Assessments'
         }
     ]
 },{timestamps: true});
