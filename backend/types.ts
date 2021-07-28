@@ -87,24 +87,28 @@ export interface nextofkin extends BasePerson, ContactInfo, timeStamps{
 
 
 export interface diagnosis extends timeStamps {
+    id: string,
     code : string;
     name? : string;
     description : string;
     remedy : string;
 }
 export interface consultation extends timeStamps {
+    id: string;
     patientID: string;
     staffID: string;
     branchID: string;
     diagnosis: objectReference[];
 }
 export interface consultationRating extends timeStamps {
+    id: string;
     consultationID : string;
     rating: number;
     comment: string;
 }
 
 export interface payments extends timeStamps {
+    id: string;
     consultationID: string;
     branchID: string;
     amount: number;
@@ -118,3 +122,4 @@ export type NewStaffEntry = Omit<staff, 'id'>;
 export type NewPatientEntry = Omit<patient, 'id'>;
 export type NewGuardianEntry = Omit<guardian, 'id'>;
 export type NewNextOfKinEntry = Omit<nextofkin, 'id'>;
+export type NewConsultationRatingEntry = Omit<consultationRating, 'id'>;
