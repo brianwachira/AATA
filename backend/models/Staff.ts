@@ -46,6 +46,12 @@ const staffSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Consultations'
         }
+    ],
+    nextOfKin:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'NextOfKin'
+        }
     ]
 }, {timestamps: true});
 
