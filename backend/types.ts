@@ -130,15 +130,15 @@ export interface payments extends timeStamps {
  }
 
 
-export type NewDispatchOfficerEntry = Omit<BasePerson, 'id'>;
-export type NewClinicEntry = Omit<clinic, 'id'>;
-export type NewStaffEntry = Omit<staff, 'id'>;
-export type NewPatientEntry = Omit<patient, 'id'>;
-export type NewGuardianEntry = Omit<guardian, 'id'>;
-export type NewNextOfKinEntry = Omit<nextofkin, 'id'>;
-export type NewConsultationEntry = Omit<consultation, 'id'>;
-export type NewDiagnosisEntry = Omit<diagnosis, 'id'>;
-export type NewRemediesEntry = Omit<remedies, 'id'>;
-export type NewConsultationRatingEntry = Omit<consultationRating, 'id'>;
-export type NewIssueEntry = Omit<issues, 'id'>;
-export type NewAdminEntry = Omit<admin, 'id'>;
+export type NewDispatchOfficerEntry = Omit<dispatchOfficer, 'id'| 'createdAt'| 'updatedAt'>;
+export type NewClinicEntry = Omit<clinic, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewStaffEntry = Omit<staff, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewPatientEntry = Omit<patient, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewGuardianEntry = Omit<guardian, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewNextOfKinEntry = Omit<nextofkin, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewConsultationEntry = Omit<consultation, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewDiagnosisEntry = Omit<diagnosis, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewRemediesEntry = Omit<remedies, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewConsultationRatingEntry = Omit<consultationRating, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewIssueEntry = Omit<issues, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewAdminEntry = Omit<admin, 'id' | 'createdAt'| 'updatedAt'>;
