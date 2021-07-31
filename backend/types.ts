@@ -1,3 +1,5 @@
+import { Document } from "mongoose";
+
 //mongoDB models
 export enum Gender {
     Male = 'm',
@@ -9,7 +11,6 @@ interface timeStamps{
     updatedAt?: Date;
 }
 interface BasePerson{
-    id: string;
     firstName: string;
     lastName: string;
     DOB: Date;
@@ -44,8 +45,8 @@ export interface Unormal extends newPersonEntry, ContactInfo, Credentials, timeS
     assessments? : objectReference[];
 }
 
-export interface admin extends BasePerson, ContactInfo, Credentials, timeStamps{
-    clinicsLaunched: objectReference[];
+export interface admin extends BasePerson, ContactInfo, Credentials, timeStamps, Document {
+    clinicsLaunched?: objectReference[];
 }
 
 export interface dispatchOfficer extends BasePerson, ContactInfo, Credentials, timeStamps{
