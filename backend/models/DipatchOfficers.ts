@@ -41,7 +41,7 @@ const dispatchOfficerSchema = new Schema({
     assessments: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Assessments'
+            ref: 'Assessment'
         }
     ]
 },{timestamps: true});

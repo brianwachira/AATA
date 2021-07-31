@@ -6,7 +6,7 @@ const consultationRatingSchema = new Schema({
 
     consultationID: {
         type: Schema.Types.ObjectId,
-        ref: 'Consultations',
+        ref: 'Consultation',
         required: true
     },
     rating: {

@@ -38,7 +38,7 @@ const patientSchema = new Schema({
     guardians: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Guardians'
+            ref: 'Guardian'
         }
     ],
     nextOfKin:[
@@ -51,5 +51,5 @@ const patientSchema = new Schema({
 
 patientSchema.plugin(uniqueValidator);
 
-const Patients = mongoose.model<NewPatientEntry>('Patients', patientSchema);
-export default Patients;
+const Patient = mongoose.model<NewPatientEntry>('Patient', patientSchema);
+export default Patient;

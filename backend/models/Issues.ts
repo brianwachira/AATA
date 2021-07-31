@@ -7,7 +7,7 @@ const issuesSchema = new Schema({
 
     branchID : {
         type: Schema.Types.ObjectId,
-        ref: 'Clinics',
+        ref: 'Clinic',
         required: true
     },
     title : {
@@ -20,7 +20,7 @@ const issuesSchema = new Schema({
     },
     filedBy : {
         type: Schema.Types.ObjectId,
-        ref: 'DispatchOfficers',
+        ref: 'DispatchOfficer',
         required: true
     }
 }, { timestamps: true });
