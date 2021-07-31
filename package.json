@@ -1,5 +1,20 @@
 {
-  "dependencies": {
-    "dotenv": "^10.0.0"
-  }
+  "name": "accessafya",
+  "version": "1.0.0",
+  "description": "Analytics dashboard for access afya",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:backend": "cd backend && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianwachira/aata.git"
+  },
+  "author": "brianwachira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brianwachira/aata/issues"
+  },
+  "homepage": "https://github.com/brianwachira/aata#readme"
 }
