@@ -21,7 +21,8 @@ const staffSchema = new Schema({
     },
     nationalID:{
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     phoneNo:{
         type: String,
@@ -30,6 +31,7 @@ const staffSchema = new Schema({
     email:{
         type: String,
         required: true,
+        unique: true
     },
     staffType:{
         type: String,

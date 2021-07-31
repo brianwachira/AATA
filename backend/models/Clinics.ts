@@ -6,7 +6,8 @@ import { NewClinicEntry } from '../types';
 const clinicSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     location: {
         type: String,

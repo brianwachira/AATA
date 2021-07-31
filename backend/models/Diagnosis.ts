@@ -5,7 +5,8 @@ import uniqueValidator from 'mongoose-unique-validator';
 const DiagnosisSchema = new Schema({
     code: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     name: {
         type: String,

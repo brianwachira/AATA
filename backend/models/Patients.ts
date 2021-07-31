@@ -22,15 +22,18 @@ const patientSchema = new Schema({
     },
     nationalID: {
         type: String,
-        required: false
+        required: false,
+        unique: true
     },
     phoneNo: {
         type: String,
-        required: false
+        required: false,
+        unique: true
     },
     email: {
         type: String,
-        required: false
+        required: false,
+        unique: true
     },
     guardians: [
         {
