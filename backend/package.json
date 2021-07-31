@@ -12,6 +12,7 @@
   "author": "brianwachira",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/graphql": "^14.5.0",
     "@types/mongoose": "^5.10.5",
     "@types/mongoose-unique-validator": "^1.0.5",
@@ -24,6 +25,7 @@
   },
   "dependencies": {
     "apollo-server": "^3.0.2",
+    "bcrypt": "^5.0.1",
     "graphql": "^15.5.1",
     "mongoose": "^5.13.3",
     "mongoose-unique-validator": "^2.0.3",
