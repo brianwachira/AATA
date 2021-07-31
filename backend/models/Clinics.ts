@@ -15,7 +15,7 @@ const clinicSchema = new Schema({
     },
     createdBy: {
         type: Schema.Types.ObjectId,
-        ref: 'Admins',
+        ref: 'Admin',
         required: true
     },
     staff:[
@@ -28,15 +28,6 @@ const clinicSchema = new Schema({
 
 clinicSchema.plugin(uniqueValidator);
 
-// clinicSchema.methods.transform =  function(){
-//     const obj = this.toObject();
-//     const id : never = obj._id;
-//     delete obj._id;
-//     obj.id = id;
-    
-//     return obj;
-// };
+const Clinic = mongoose.model<NewClinicEntry>('Clinic', clinicSchema);
 
-const Clinics = mongoose.model<NewClinicEntry>('Clinics', clinicSchema);
-
-export default Clinics;
+export default Clinic;
