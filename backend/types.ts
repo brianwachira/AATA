@@ -62,7 +62,7 @@ export interface clinic extends timeStamps{
     createdBy: string;
 }
 
-export interface staff extends BasePerson,ContactInfo, staffType,timeStamps{
+export interface staff extends BasePerson,ContactInfo, staffType,timeStamps, Document{
     branch: objectReference[];
     consultations?: objectReference[];
     nextOfKin: objectReference[];
