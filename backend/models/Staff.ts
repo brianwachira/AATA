@@ -40,13 +40,13 @@ const staffSchema = new Schema({
     branch:[
         {
             type: Schema.Types.ObjectId,
-            ref: 'Clinics'
+            ref: 'Clinic'
         }
     ],
     consultations:[
         {
             type: Schema.Types.ObjectId,
-            ref: 'Consultations'
+            ref: 'Consultation'
         }
     ],
     nextOfKin:[
