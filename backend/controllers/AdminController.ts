@@ -11,7 +11,7 @@ import { parseString } from "../typeGuards";
 
 /**
  * creates admin
- * @param args admin
+ * @param args {NewAdminEntry} admin
  * @returns {admin} created Admin
  */
  
@@ -74,7 +74,7 @@ export const getAllAdmins = async (): Promise<admin[]> => {
 /**
  * gets admin
  * @param args id
- * @returns {admin} list of all admins
+ * @returns {admin} admin
  */
 
 export const getAdmin = async(args: { id: string; }): Promise<admin> => {
