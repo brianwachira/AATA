@@ -18,13 +18,15 @@ extend type Query {
 }
 extend type Mutation{
     createClinic(
-        name: String!,
-        location: String!,
-        createdBy: String!,
+        name: String!
+        location: String!
+        createdBy: String!
         staff:[String]): Clinic
     updateClinic(
-        name: String!,
-        location: String!,
+        id: ID!
+        name: String!
+        location: String!
+        createdBy: String!
         staff:[String]): Clinic
     
 }
