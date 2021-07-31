@@ -54,8 +54,7 @@ export interface dispatchOfficer extends BasePerson, ContactInfo, Credentials, t
 }
 
 //clinic
-export interface clinic extends timeStamps{
-    id: string;
+export interface clinic extends timeStamps, Document{
     name: string;
     location: string;
     staff?: objectReference[];
