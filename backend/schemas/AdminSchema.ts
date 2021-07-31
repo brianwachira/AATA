@@ -16,11 +16,11 @@ type Admin {
     password: String!,
     clinicsLaunched:[String]
 }
-type Query {
+extend type Query {
     admins: [Admin]
     admin(id: String!): Admin
 }
-type Mutation {
+extend type Mutation {
     createAdmin(
         firstName: String!
         lastName: String!

@@ -21,11 +21,18 @@ const dispatchOfficerSchema = new Schema({
     },
     nationalID: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     phoneNo: {
         type: String,
-        required: true
+        required: true,
+        unique: true
+    },
+    email: {
+        type: String,
+        required: false,
+        unique: true
     },
     password: {
         type: String,
