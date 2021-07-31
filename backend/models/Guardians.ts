@@ -39,7 +39,7 @@ const guardianSchema = new Schema({
     patients: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Patients'
+            ref: 'Patient'
         }
     ]
 },{timestamps: true});

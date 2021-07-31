@@ -21,8 +21,14 @@ interface ContactInfo{
     nationalID: string;
     phoneNo: string;
     email: string;
-
 }
+
+interface OptionalContactInfo{
+    nationalID?: string;
+    phoneNo?: string;
+    email?: string;
+}
+
 interface Credentials{
     password: string;
 
@@ -69,7 +75,7 @@ export interface staff extends BasePerson,ContactInfo, staffType,timeStamps, Doc
 
 }
 
-export interface patient extends BasePerson, timeStamps{
+export interface patient extends BasePerson, timeStamps, OptionalContactInfo,Document{
     consultations: objectReference[];
     guardians?: objectReference[];
     nextOfKin: objectReference[];

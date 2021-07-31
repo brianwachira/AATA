@@ -5,7 +5,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 const consultationSchema = new Schema({
     patientID: {
         type: Schema.Types.ObjectId,
-        ref: 'Patients',
+        ref: 'Patient',
         required: true
     },
     staffID: [{
@@ -15,7 +15,7 @@ const consultationSchema = new Schema({
     }],
     branch: {
         type: Schema.Types.ObjectId,
-        ref: 'Clinics',
+        ref: 'Clinic',
         required: true
     },
     diagnosis: [{

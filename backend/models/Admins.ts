@@ -41,7 +41,7 @@ const adminSchema = new Schema({
     clinicsLaunched: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Clinics'
+            ref: 'Clinic'
         }
     ]
 },{timestamps: true});
