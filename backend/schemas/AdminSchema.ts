@@ -20,30 +20,18 @@ type Query {
     admins: [Admin]
     admin(id: String!): Admin
 }
-input CreateAdminInput {
-    firstName: String!,
-    lastName: String!,
-    DOB: String!,
-    gender: String!,
-    nationalID: String!,
-    phoneNo: String!,
-    email: String!,
-    password: String!,
-    clinicsLaunched:[String]
-}
-input UpdateAdminInput {
-    firstName: String!,
-    lastName: String!,
-    DOB: String!,
-    gender: String!,
-    nationalID: String!,
-    phoneNo: String!,
-    email: String!,
-    password: String!,
-    clinicsLaunched:[String]
-}
-extend type Mutation {
-    createAdmin(input: CreateAdminInput!): Admin
-    updateAdmin(input: UpdateAdminInput!): Admin
+type Mutation {
+    createAdmin(
+        firstName: String!
+        lastName: String!
+        DOB: String!
+        gender: String!
+        nationalID: String!
+        phoneNo: String!
+        email: String!
+        password: String!
+        clinicsLaunched:[String]): Admin
+    updateAdmin(
+        clinicsLaunched:[String!]!): Admin
 }
 `;
