@@ -10,4 +10,4 @@ import { StaffResolver } from "./StaffResolver";
  * @description holds all resolvers
  */
 
-export const resolvers = [AdminResolver, DispatchOfficerResolver, StaffResolver, ClinicResolver, PatientResolver, GuardianResolver, NextOfKinResolver];
+export const resolvers = [AdminResolver, DispatchOfficerResolver, StaffResolver, ClinicResolver, PatientResolver, GuardianResolver, NextOfKinResolver, PatientResolver];

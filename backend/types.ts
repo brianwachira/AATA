@@ -69,14 +69,14 @@ export interface clinic extends timeStamps, Document {
 
 export interface staff extends BasePerson, ContactInfo, staffType, timeStamps, Document {
     branch: objectReference[];
-    consultations?: objectReference[];
+    consultations: PopulatedDoc<consultation & Document>[];
     nextOfKin: objectReference[];
 
 
 }
 
 export interface patient extends BasePerson, timeStamps, OptionalContactInfo, Document {
-    consultations: objectReference[];
+    consultations: PopulatedDoc<consultation & Document>[];
     guardians?: string;
     nextOfKin: objectReference[];
 }
@@ -91,9 +91,14 @@ export interface nextofkin extends BasePerson, ContactInfo, timeStamps, Document
     patients: objectReference[];
 }
 
+export interface consultation extends timeStamps, Document {
+    patient: patient;
+    staff: PopulatedDoc<Array<staff> & Array<Document>>;
+    branch: PopulatedDoc<clinic & Document>;
+    diagnosis:PopulatedDoc<diagnosis[] & Document[]>;
+}
 
 export interface diagnosis extends timeStamps, Document {
-    id: string,
     code: string;
     name?: string;
     description: string;
@@ -101,18 +106,11 @@ export interface diagnosis extends timeStamps, Document {
 }
 
 export interface remedies extends timeStamps, Document {
-    id: string,
     title: string,
     description: string,
     diagnosis: objectReference[];
 }
-export interface consultation extends timeStamps, Document {
-    id: string;
-    patientID: string;
-    staffID: string;
-    branchID: string;
-    diagnosis: objectReference[];
-}
+
 export interface consultationRating extends timeStamps, Document {
     id: string;
     consultationID: string;
