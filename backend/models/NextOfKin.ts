@@ -30,7 +30,11 @@ const nextOfKinSchema = new Schema({
     },
     email: {
         type: String,
-        required: false
+        required: false,
+        index: {
+            unique: true,
+            partialFilterExpression: { email: { $type: "string" } }
+        }
     },
     relationship: {
         type: String,

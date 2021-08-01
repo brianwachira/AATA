@@ -14,7 +14,7 @@ type Staff {
     phoneNo: String!,
     email: String!,
     staffType: String!,
-    branch:[String],
+    branch:[Clinic],
     consultations:[String],
     nextOfKin:[String]    
 }

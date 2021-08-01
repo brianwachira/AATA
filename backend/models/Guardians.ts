@@ -30,7 +30,11 @@ const guardianSchema = new Schema({
     },
     email: {
         type: String,
-        required: false
+        required: false,
+        index: {
+            unique: true,
+            partialFilterExpression: { email: { $type: "string" } }
+        }
     },
     relationship: {
         type: String,
@@ -46,5 +50,5 @@ const guardianSchema = new Schema({
 
 guardianSchema.plugin(uniqueValidator);
 
-const Guardians = mongoose.model<NewGuardianEntry>('Guardians', guardianSchema);
-export default Guardians;
+const Guardian = mongoose.model<NewGuardianEntry>('Guardians', guardianSchema);
+export default Guardian;

@@ -14,8 +14,9 @@ type Patient {
     nationalID: String,
     phoneNo: String,
     email: String,
-    guardian: [String],
-    nextOfKin:[String]
+    guardian: Guardian,
+    nextOfKin:[String],
+    consultations:[String]
 }
 extend type Query {
     patients: [Patient]
@@ -30,8 +31,9 @@ extend type Mutation {
         nationalID: String,
         phoneNo: String,
         email: String,
-        guardian: [String],
-        nextOfKin:[String]): Patient
+        guardian: String,
+        nextOfKin:[String]
+        consultations:[String]): Patient
     updatePatient(
         id: ID!,
         firstName: String!,
@@ -41,8 +43,9 @@ extend type Mutation {
         nationalID: String,
         phoneNo: String,
         email: String,
-        guardian: [String],
-        nextOfKin:[String]): Patient
+        guardian: String,
+        nextOfKin:[String],
+        consultations:[String]): Patient
 
 }
 `;
