@@ -52,8 +52,8 @@ export const updatePatient = async (args: patient): Promise<patient> => {
  * @returns {patient[]} list all of patients
  */
 
-export const getAllPatients = async(): Promise<patient[]> => {
-    const patient : patient[] = await Patient.find();
+export const getAllPatients = async (): Promise<patient[]> => {
+    const patient: patient[] = await Patient.find();
 
     return patient;
 };
@@ -64,10 +64,10 @@ export const getAllPatients = async(): Promise<patient[]> => {
  * @returns {patient} patient
  */
 
-export const getPatient = async (args: {id: string;}): Promise<patient> => {
+export const getPatient = async (args: { id: string; }): Promise<patient> => {
     const patient = await Patient.findById(args);
 
-    if(!patient) {
+    if (!patient) {
         throw new UserInputError("Patient is not available", { invalidArgs: args.id });
     }
 
