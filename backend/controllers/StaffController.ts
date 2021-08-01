@@ -70,7 +70,7 @@ export const getAllStaff = async(): Promise<staff[]> => {
     const staff = await Staff.findById(args);
 
     if (!staff) {
-        throw new UserInputError("User is not available", { invalidArgs: args.id });
+        throw new UserInputError("Staff is not available", { invalidArgs: args.id });
     }
 
     return staff;
