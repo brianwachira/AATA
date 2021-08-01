@@ -3,12 +3,12 @@ import { NewConsultationEntry } from "../types";
 import uniqueValidator from 'mongoose-unique-validator';
 
 const consultationSchema = new Schema({
-    patientID: {
+    patient: {
         type: Schema.Types.ObjectId,
         ref: 'Patient',
         required: true
     },
-    staffID: [{
+    staff: [{
         type: Schema.Types.ObjectId,
         ref: 'Staff',
         required: true
@@ -28,6 +28,6 @@ const consultationSchema = new Schema({
 
 consultationSchema.plugin(uniqueValidator);
 
-const Consultations = mongoose.model<NewConsultationEntry>('Consultations', consultationSchema);
+const Consultation = mongoose.model<NewConsultationEntry>('Consultation', consultationSchema);
 
-export default Consultations;
+export default Consultation;
