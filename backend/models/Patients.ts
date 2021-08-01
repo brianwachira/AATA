@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
 
-import {NewPatientEntry} from '../types';
+import { NewPatientEntry } from '../types';
 
 const patientSchema = new Schema({
     firstName: {
@@ -23,31 +23,45 @@ const patientSchema = new Schema({
     nationalID: {
         type: String,
         required: false,
-        unique: true
+        index: {
+            unique: true,
+            partialFilterExpression: { nationalID: { $type: "string" } }
+        }
     },
     phoneNo: {
         type: String,
         required: false,
-        unique: true
+        index: {
+            unique: true,
+            partialFilterExpression: { phoneNo: { $type: "string" } }
+        }
     },
     email: {
         type: String,
         required: false,
-        unique: true
-    },
-    guardians: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Guardian'
+        index: {
+            unique: true,
+            partialFilterExpression: { email: { $type: "string" } }
         }
-    ],
-    nextOfKin:[
+    },
+    guardians:
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'Guardian'
+    },
+    nextOfKin: [
         {
             type: Schema.Types.ObjectId,
             ref: 'NextOfKin'
         }
-    ]
-},{timestamps: true});
+    ],
+    consultations: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Consultation'
+        }
+    ],
+}, { timestamps: true });
 
 patientSchema.plugin(uniqueValidator);
 
