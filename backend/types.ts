@@ -86,13 +86,13 @@ export interface guardian extends BasePerson, ContactInfo, timeStamps, Document 
     patients: PopulatedDoc<patient[] & Document[]>;
 }
 
-export interface nextofkin extends BasePerson, ContactInfo, timeStamps {
+export interface nextofkin extends BasePerson, ContactInfo, timeStamps, Document {
     relationship: string;
     patients: objectReference[];
 }
 
 
-export interface diagnosis extends timeStamps {
+export interface diagnosis extends timeStamps, Document {
     id: string,
     code: string;
     name?: string;
@@ -100,33 +100,33 @@ export interface diagnosis extends timeStamps {
     remedy: objectReference[];
 }
 
-export interface remedies extends timeStamps {
+export interface remedies extends timeStamps, Document {
     id: string,
     title: string,
     description: string,
     diagnosis: objectReference[];
 }
-export interface consultation extends timeStamps {
+export interface consultation extends timeStamps, Document {
     id: string;
     patientID: string;
     staffID: string;
     branchID: string;
     diagnosis: objectReference[];
 }
-export interface consultationRating extends timeStamps {
+export interface consultationRating extends timeStamps, Document {
     id: string;
     consultationID: string;
     rating: number;
     comment: string;
 }
 
-export interface payments extends timeStamps {
+export interface payments extends timeStamps, Document {
     id: string;
     consultationID: string;
     branchID: string;
     amount: number;
 }
-export interface issues extends timeStamps {
+export interface issues extends timeStamps, Document {
     id: string;
     title: string;
     description: string;
