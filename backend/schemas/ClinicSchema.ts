@@ -9,8 +9,8 @@ type Clinic {
     id: ID!,
     name: String!,
     location: String!,
-    createdBy: String!,
-    staff: [String]
+    createdBy: Admin!,
+    staff: [Staff]
 }
 extend type Query {
     clinics: [Clinic],
