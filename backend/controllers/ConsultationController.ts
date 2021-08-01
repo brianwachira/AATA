@@ -70,11 +70,12 @@ export const createConsultation = async (args: NewConsultationEntry): Promise<co
  */
 
 export const updateConsultation = async (args: consultation): Promise<consultation> => {
-    const consultation = await Consultation.findById(args._id);
+    let consultation = await Consultation.findById(args._id);
 
     if (!consultation) {
         throw new UserInputError("Guardian not available", { invalidArgs: args });
     }
+    consultation = args;
     try {
         await consultation.save();
     } catch (error) {
@@ -104,7 +105,7 @@ export const getConsultation = async (args: { id: string; }): Promise<consultati
     const consultation = await Consultation.findById(args).populate('patients staff branch diagnosis');
 
     if (!consultation) {
-        throw new UserInputError("Staff is not available", { invalidArgs: args.id });
+        throw new UserInputError("Consultation is not available", { invalidArgs: args.id });
     }
     return consultation;
 };
