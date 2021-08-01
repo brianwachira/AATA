@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import { Document, PopulatedDoc } from "mongoose";
 
 //mongoDB models
 export enum Gender {
@@ -6,37 +6,37 @@ export enum Gender {
     Female = 'f',
 }
 
-interface timeStamps{
+interface timeStamps {
     createdAt?: Date;
     updatedAt?: Date;
 }
-interface BasePerson{
+interface BasePerson {
     firstName: string;
     lastName: string;
     DOB: Date;
     gender: Gender;
 }
 
-interface ContactInfo{
+interface ContactInfo {
     nationalID: string;
     phoneNo: string;
     email: string;
 }
 
-interface OptionalContactInfo{
+interface OptionalContactInfo {
     nationalID?: string;
     phoneNo?: string;
     email?: string;
 }
 
-interface Credentials{
+interface Credentials {
     password: string;
 
 }
-interface objectReference{
+interface objectReference {
     id: string;
 }
-interface staffType{
+interface staffType {
     staffType: string
 }
 
@@ -44,30 +44,30 @@ interface staffType{
 export type newPersonEntry = Omit<BasePerson, 'id'>;
 
 //
-export interface Unormal extends newPersonEntry, ContactInfo, Credentials, timeStamps{
+export interface Unormal extends newPersonEntry, ContactInfo, Credentials, timeStamps {
     _id?: string;
     __v?: string;
     id?: string;
-    assessments? : objectReference[];
+    assessments?: objectReference[];
 }
 
 export interface admin extends BasePerson, ContactInfo, Credentials, timeStamps, Document {
     clinicsLaunched?: objectReference[];
 }
 
-export interface dispatchOfficer extends BasePerson, ContactInfo, Credentials, timeStamps, Document{
-    assessments? : objectReference[];
+export interface dispatchOfficer extends BasePerson, ContactInfo, Credentials, timeStamps, Document {
+    assessments?: objectReference[];
 }
 
 //clinic
-export interface clinic extends timeStamps, Document{
+export interface clinic extends timeStamps, Document {
     name: string;
     location: string;
     staff?: objectReference[];
     createdBy: string;
 }
 
-export interface staff extends BasePerson,ContactInfo, staffType,timeStamps, Document{
+export interface staff extends BasePerson, ContactInfo, staffType, timeStamps, Document {
     branch: objectReference[];
     consultations?: objectReference[];
     nextOfKin: objectReference[];
@@ -75,29 +75,29 @@ export interface staff extends BasePerson,ContactInfo, staffType,timeStamps, Doc
 
 }
 
-export interface patient extends BasePerson, timeStamps, OptionalContactInfo,Document{
+export interface patient extends BasePerson, timeStamps, OptionalContactInfo, Document {
     consultations: objectReference[];
-    guardians?: objectReference[];
+    guardians?: string;
     nextOfKin: objectReference[];
 }
 
-export interface guardian extends BasePerson, ContactInfo, timeStamps{
+export interface guardian extends BasePerson, ContactInfo, timeStamps, Document {
     relationship: string;
-    patients: objectReference[];   
+    patients: PopulatedDoc<patient[] & Document[]>;
 }
 
-export interface nextofkin extends BasePerson, ContactInfo, timeStamps{
+export interface nextofkin extends BasePerson, ContactInfo, timeStamps {
     relationship: string;
-    patients: objectReference[];   
+    patients: objectReference[];
 }
 
 
 export interface diagnosis extends timeStamps {
     id: string,
-    code : string;
-    name? : string;
-    description : string;
-    remedy : objectReference[];
+    code: string;
+    name?: string;
+    description: string;
+    remedy: objectReference[];
 }
 
 export interface remedies extends timeStamps {
@@ -115,7 +115,7 @@ export interface consultation extends timeStamps {
 }
 export interface consultationRating extends timeStamps {
     id: string;
-    consultationID : string;
+    consultationID: string;
     rating: number;
     comment: string;
 }
@@ -126,25 +126,25 @@ export interface payments extends timeStamps {
     branchID: string;
     amount: number;
 }
- export interface issues extends timeStamps {
+export interface issues extends timeStamps {
     id: string;
     title: string;
     description: string;
     branchID: string;
     filedBy: string;
 
- }
+}
 
 
-export type NewDispatchOfficerEntry = Omit<dispatchOfficer, 'id'| 'createdAt'| 'updatedAt'>;
-export type NewClinicEntry = Omit<clinic, 'id' | 'createdAt'| 'updatedAt'>;
-export type NewStaffEntry = Omit<staff, 'id' | 'createdAt'| 'updatedAt'>;
-export type NewPatientEntry = Omit<patient, 'id' | 'createdAt'| 'updatedAt'>;
-export type NewGuardianEntry = Omit<guardian, 'id' | 'createdAt'| 'updatedAt'>;
-export type NewNextOfKinEntry = Omit<nextofkin, 'id' | 'createdAt'| 'updatedAt'>;
-export type NewConsultationEntry = Omit<consultation, 'id' | 'createdAt'| 'updatedAt'>;
-export type NewDiagnosisEntry = Omit<diagnosis, 'id' | 'createdAt'| 'updatedAt'>;
-export type NewRemediesEntry = Omit<remedies, 'id' | 'createdAt'| 'updatedAt'>;
-export type NewConsultationRatingEntry = Omit<consultationRating, 'id' | 'createdAt'| 'updatedAt'>;
-export type NewIssueEntry = Omit<issues, 'id' | 'createdAt'| 'updatedAt'>;
-export type NewAdminEntry = Omit<admin, 'id' | 'createdAt'| 'updatedAt'>;
+export type NewDispatchOfficerEntry = Omit<dispatchOfficer, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewClinicEntry = Omit<clinic, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewStaffEntry = Omit<staff, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewPatientEntry = Omit<patient, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewGuardianEntry = Omit<guardian, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewNextOfKinEntry = Omit<nextofkin, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewConsultationEntry = Omit<consultation, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewDiagnosisEntry = Omit<diagnosis, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewRemediesEntry = Omit<remedies, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewConsultationRatingEntry = Omit<consultationRating, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewIssueEntry = Omit<issues, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewAdminEntry = Omit<admin, 'id' | 'createdAt' | 'updatedAt'>;
