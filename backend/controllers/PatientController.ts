@@ -53,7 +53,7 @@ export const updatePatient = async (args: patient): Promise<patient> => {
  */
 
 export const getAllPatients = async (): Promise<patient[]> => {
-    const patient: patient[] = await Patient.find();
+    const patient: patient[] = await Patient.find().populate('clinic');
 
     return patient;
 };
@@ -65,7 +65,7 @@ export const getAllPatients = async (): Promise<patient[]> => {
  */
 
 export const getPatient = async (args: { id: string; }): Promise<patient> => {
-    const patient = await Patient.findById(args);
+    const patient = await Patient.findById(args).populate('clinic');
 
     if (!patient) {
         throw new UserInputError("Patient is not available", { invalidArgs: args.id });
