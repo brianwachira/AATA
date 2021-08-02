@@ -4,6 +4,7 @@ import { admin } from "../types";
 /**
  * @description holds Admin queries
  */
+
 export const AdminQuery = {
     admins: {
         resolve: async()=>{
