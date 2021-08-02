@@ -14,6 +14,7 @@ type Patient {
     nationalID: String,
     phoneNo: String,
     email: String,
+    branchOfRegistry: Clinic!,
     guardian: Guardian,
     nextOfKin:[String],
     consultations:[String]
@@ -31,6 +32,7 @@ extend type Mutation {
         nationalID: String,
         phoneNo: String,
         email: String,
+        branchOfRegistry: Clinic!,
         guardian: String,
         nextOfKin:[String]
         consultations:[String]): Patient
@@ -43,6 +45,7 @@ extend type Mutation {
         nationalID: String,
         phoneNo: String,
         email: String,
+        branchOfRegistry: Clinic!,
         guardian: String,
         nextOfKin:[String],
         consultations:[String]): Patient
