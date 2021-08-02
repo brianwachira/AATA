@@ -116,18 +116,17 @@ export interface consultationRating extends timeStamps, Document {
     comment: string;
 }
 
-export interface payments extends timeStamps, Document {
-    id: string;
+export interface payment extends timeStamps, Document {
     consultationID: string;
     branchID: string;
     amount: number;
 }
-export interface issues extends timeStamps, Document {
-    id: string;
+export interface issue extends timeStamps, Document {
     title: string;
     description: string;
-    branchID: string;
-    filedBy: string;
+    branchID: PopulatedDoc<clinic & Document>;
+    filedBy: PopulatedDoc<dispatchOfficer & Document>
+    isSolved: boolean;
 
 }
 
@@ -142,5 +141,5 @@ export type NewConsultationEntry = Omit<consultation, 'id' | 'createdAt' | 'upda
 export type NewDiagnosisEntry = Omit<diagnosis, 'id' | 'createdAt' | 'updatedAt'>;
 export type NewRemediesEntry = Omit<remedy, 'id' | 'createdAt' | 'updatedAt'>;
 export type NewConsultationRatingEntry = Omit<consultationRating, 'id' | 'createdAt' | 'updatedAt'>;
-export type NewIssueEntry = Omit<issues, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewIssueEntry = Omit<issue, 'id' | 'createdAt' | 'updatedAt'>;
 export type NewAdminEntry = Omit<admin, 'id' | 'createdAt' | 'updatedAt'>;
