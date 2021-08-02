@@ -1,8 +1,10 @@
-import { getAllDiagnosis, getDiagnosis } from "../controllers/DIagnosisController";
+import { getAllDiagnosis, getDiagnosis } from "../controllers/DiagnosisController";
 import { diagnosis } from "../types";
+
 /**
  * @description holds Diagnosis queries
  */
+
 export const DiagnosisQuery = {
     allDiagnosis: {
         resolve: async() => {
