@@ -6,6 +6,7 @@ import { DefaultSchema } from "./DefaultSchema";
 import { DiagnosisSchema } from "./DiagnosisSchema";
 import { DispatchOfficerSchema } from "./DispatchOfficerSchema";
 import { GuardianSchema } from "./GuardianSchema";
+import { IssuesSchema } from "./IssuesSchema";
 import { NextOfKinSchema } from "./NextOfKinSchema";
 import { PatientSchema } from "./PatientSchema";
 import { RemedySchema } from "./RemedySchema";
@@ -14,4 +15,4 @@ import { StaffSchema } from "./StaffSchema";
  * @description holds all schemas
  */
 
-export const schema = [DefaultSchema, AdminSchema, ClinicSchema, DispatchOfficerSchema,StaffSchema, PatientSchema, GuardianSchema, NextOfKinSchema, ConsultationSchema, ConsultationRatingSchema, RemedySchema, DiagnosisSchema];
+export const schema = [DefaultSchema, AdminSchema, ClinicSchema, DispatchOfficerSchema,StaffSchema, PatientSchema, GuardianSchema, NextOfKinSchema, ConsultationSchema, ConsultationRatingSchema, RemedySchema, DiagnosisSchema, IssuesSchema];
