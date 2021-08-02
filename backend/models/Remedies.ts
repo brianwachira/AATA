@@ -3,8 +3,11 @@ import { NewRemediesEntry } from "../types";
 import uniqueValidator from 'mongoose-unique-validator';
 
 const RemediesSchema = new Schema({
-
-    title: {
+    code: {
+        type: String,
+        required: true
+    },
+    name: {
         type: String,
         required: true
     },

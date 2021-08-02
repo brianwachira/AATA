@@ -102,7 +102,7 @@ export interface diagnosis extends timeStamps, Document {
     code: string;
     name?: string;
     description: string;
-    remedy: PopulatedDoc<remedies[] & Document[]>;
+    remedy: PopulatedDoc<remedy[] & Document[]>;
 }
 
 export interface remedy extends timeStamps, Document {
