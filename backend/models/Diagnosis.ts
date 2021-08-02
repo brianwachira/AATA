@@ -16,14 +16,14 @@ const DiagnosisSchema = new Schema({
         type: String,
         required: true
     },
-    remedy: [
+    remedies: [
         {
-            type:Schema.Types.ObjectId,
-            ref: 'remedies',      
+            type: Schema.Types.ObjectId,
+            ref: 'remedy',
         }
     ]
 
-},{timestamps: true});
+}, { timestamps: true });
 
 DiagnosisSchema.plugin(uniqueValidator);
 const Diagnosis = mongoose.model<NewDiagnosisEntry>('Diagnosis', DiagnosisSchema);
