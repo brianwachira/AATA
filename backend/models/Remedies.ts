@@ -20,6 +20,6 @@ const RemediesSchema = new Schema({
 
 RemediesSchema.plugin(uniqueValidator);
 
-const Remedies = mongoose.model<NewRemediesEntry>('Remedies', RemediesSchema);
+const Remedy = mongoose.model<NewRemediesEntry>('Remedies', RemediesSchema);
 
-export default Remedies;
+export default Remedy;

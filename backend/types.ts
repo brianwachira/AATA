@@ -95,20 +95,19 @@ export interface consultation extends timeStamps, Document {
     patient: patient;
     staff: PopulatedDoc<Array<staff> & Array<Document>>;
     branch: PopulatedDoc<clinic & Document>;
-    diagnosis:PopulatedDoc<diagnosis[] & Document[]>;
+    diagnosis: PopulatedDoc<diagnosis[] & Document[]>;
 }
 
 export interface diagnosis extends timeStamps, Document {
     code: string;
     name?: string;
     description: string;
-    remedy: objectReference[];
+    remedy: PopulatedDoc<remedies[] & Document[]>;
 }
 
-export interface remedies extends timeStamps, Document {
+export interface remedy extends timeStamps, Document {
     title: string,
     description: string,
-    diagnosis: objectReference[];
 }
 
 export interface consultationRating extends timeStamps, Document {
@@ -141,7 +140,7 @@ export type NewGuardianEntry = Omit<guardian, 'id' | 'createdAt' | 'updatedAt'>;
 export type NewNextOfKinEntry = Omit<nextofkin, 'id' | 'createdAt' | 'updatedAt'>;
 export type NewConsultationEntry = Omit<consultation, 'id' | 'createdAt' | 'updatedAt'>;
 export type NewDiagnosisEntry = Omit<diagnosis, 'id' | 'createdAt' | 'updatedAt'>;
-export type NewRemediesEntry = Omit<remedies, 'id' | 'createdAt' | 'updatedAt'>;
+export type NewRemediesEntry = Omit<remedy, 'id' | 'createdAt' | 'updatedAt'>;
 export type NewConsultationRatingEntry = Omit<consultationRating, 'id' | 'createdAt' | 'updatedAt'>;
 export type NewIssueEntry = Omit<issues, 'id' | 'createdAt' | 'updatedAt'>;
 export type NewAdminEntry = Omit<admin, 'id' | 'createdAt' | 'updatedAt'>;
