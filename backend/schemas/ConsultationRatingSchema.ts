@@ -8,7 +8,7 @@ export const ConsultationRatingSchema = gql`
 type ConsultationRating {
     id: String!,
     consultationID: Consultation!,
-    rating: number!,
+    rating: Int!,
     comment: String!,
 }
 extend type Query{
@@ -19,12 +19,12 @@ extend type Mutation{
     createConsultationRating(
         id: String!,
         consultationID: String!,
-        rating: number!,
+        rating: Int!,
         comment: String!): ConsultationRating,
     updateConsultationRating(
         id: String!,
         consultationID: String!,
-        rating: number!,
+        rating: Int!,
         comment: String!): ConsultationRating
 }
 `;
