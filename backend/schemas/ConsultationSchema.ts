@@ -23,6 +23,11 @@ extend type Mutation{
         staff: [String!]!,
         branch: String!,
         diagnosis: [String!]!): Consultation,
-    updateConsultation(): Consultation
+    updateConsultation(
+        id: String!,
+        patient: String!,
+        staff: [String!]!,
+        branch: String!,
+        diagnosis: [String!]!): Consultation
 }
 `;

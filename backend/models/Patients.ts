@@ -44,6 +44,11 @@ const patientSchema = new Schema({
             partialFilterExpression: { email: { $type: "string" } }
         }
     },
+    branchOfRegistry:
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'Clinic'
+    },
     guardians:
     {
         type: Schema.Types.ObjectId,

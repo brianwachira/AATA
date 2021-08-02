@@ -4,6 +4,7 @@ import { clinic } from "../types";
 /**
  * @description holds clinic queries
  */
+
 export const ClinicQuery = {
     clinics: {
         resolve: async() => {
