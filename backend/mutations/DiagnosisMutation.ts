@@ -1,4 +1,4 @@
-import { createDiagnosis, updateDiagnosis } from "../controllers/DIagnosisController";
+import { createDiagnosis, updateDiagnosis } from "../controllers/DiagnosisController";
 import { diagnosis, NewDiagnosisEntry } from "../types";
 
 /**

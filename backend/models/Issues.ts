@@ -22,11 +22,15 @@ const issuesSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'DispatchOfficer',
         required: true
+    },
+    isSolved : {
+        type : Boolean,
+        default: false
     }
 }, { timestamps: true });
 
 issuesSchema.plugin(uniqueValidator);
 
-const Issues = mongoose.model<NewIssueEntry>('Issues', issuesSchema);
+const Issue = mongoose.model<NewIssueEntry>('Issue', issuesSchema);
 
-export default Issues;
+export default Issue;
