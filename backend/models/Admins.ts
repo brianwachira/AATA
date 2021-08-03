@@ -49,5 +49,5 @@ const adminSchema = new Schema({
 adminSchema.plugin(uniqueValidator);
 
 
-const Admin = mongoose.model<NewAdminEntry>('Admins', adminSchema);
+const Admin = mongoose.model<NewAdminEntry>('Admin', adminSchema);
 export default Admin;
