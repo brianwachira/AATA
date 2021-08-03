@@ -66,7 +66,7 @@ export const updateAdmin = async (args: admin): Promise<admin> => {
  */
 
 export const getAllAdmins = async (): Promise<admin[]> => {
-    const admins : admin[]= await Admin.find();
+    const admins : admin[]= await Admin.find({}).populate('clinicsLaunched');
 
     return admins;
 };
