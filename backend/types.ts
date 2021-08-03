@@ -52,19 +52,19 @@ export interface Unormal extends newPersonEntry, ContactInfo, Credentials, timeS
 }
 
 export interface admin extends BasePerson, ContactInfo, Credentials, timeStamps, Document {
-    clinicsLaunched?: objectReference[];
+    clinicsLaunched: PopulatedDoc<clinic & Document>[];
 }
 
 export interface dispatchOfficer extends BasePerson, ContactInfo, Credentials, timeStamps, Document {
-    assessments?: objectReference[];
+    assessments: objectReference[];
 }
 
 //clinic
 export interface clinic extends timeStamps, Document {
     name: string;
     location: string;
-    staff?: objectReference[];
-    createdBy: string;
+    staff: staff;
+    createdBy: admin;
 }
 
 export interface staff extends BasePerson, ContactInfo, staffType, timeStamps, Document {
@@ -78,7 +78,7 @@ export interface staff extends BasePerson, ContactInfo, staffType, timeStamps, D
 export interface patient extends BasePerson, timeStamps, OptionalContactInfo, Document {
     consultations: PopulatedDoc<consultation & Document>[];
     guardians?: string;
-    nextOfKin: objectReference[];
+    nextOfKin: PopulatedDoc<nextofkin & Document>[];
 }
 
 export interface guardian extends BasePerson, ContactInfo, timeStamps, Document {
