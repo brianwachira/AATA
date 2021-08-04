@@ -1,0 +1,22 @@
+@import "../../index.scss";
+
+.banner-img {
+    background-image:url(../../Assets/Images/comingsoon.png) !important;
+    background-size: cover;
+    width: 60vw;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    left: initial;
+    top: 0;
+    background-repeat: no-repeat;
+    .img-overlay{
+        background : rgba(0, 0, 0, 0) linear-gradient(149.44deg, $color-primary -8.2%, rgb(33, 33, 33) 114.65%) repeat scroll 0% 0%;
+        position: absolute;
+        width: 60vw;
+        height: 100vh;
+        z-index: 1;
+        mix-blend-mode: multiply;
+        opacity: 0.9;
+    }
+}
