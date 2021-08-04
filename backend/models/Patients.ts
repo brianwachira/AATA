@@ -54,12 +54,12 @@ const patientSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Guardian'
     },
-    nextOfKin: [
+    nextOfKin:
         {
             type: Schema.Types.ObjectId,
             ref: 'NextOfKin'
         }
-    ],
+    ,
     consultations: [
         {
             type: Schema.Types.ObjectId,
