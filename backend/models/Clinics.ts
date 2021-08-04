@@ -17,13 +17,7 @@ const clinicSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Admin',
         required: true
-    },
-    staff:[
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Staff'
-        }
-    ]  
+    },  
 },{timestamps: true});
 
 clinicSchema.plugin(uniqueValidator);
