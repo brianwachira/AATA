@@ -63,7 +63,6 @@ export interface dispatchOfficer extends BasePerson, ContactInfo, Credentials, t
 export interface clinic extends timeStamps, Document {
     name: string;
     location: string;
-    staff: staff;
     createdBy: admin;
 }
 
