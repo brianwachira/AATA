@@ -16,7 +16,7 @@ type Staff {
     staffType: String!,
     branch:[Clinic],
     consultations:[String],
-    nextOfKin:[String]    
+    nextOfKin:String    
 }
 extend type Query {
     staff: [Staff]
@@ -34,7 +34,7 @@ extend type Mutation{
         staffType: String!,
         branch:[String],
         consultations:[String],
-        nextOfKin:[String]): Staff
+        nextOfKin:String): Staff
     updateStaff(
         id: ID!,
         firstName: String!,
@@ -47,6 +47,6 @@ extend type Mutation{
         staffType: String!,
         branch:[String],
         consultations:[String],
-        nextOfKin:[String]): Staff
+        nextOfKin:String): Staff
 }
 `;
