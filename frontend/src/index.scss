@@ -15,14 +15,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+// ====== Variables =====
 
+// colors
 $color-primary: #187f78 !important;
 $color-primary-rgba: rgb(24, 127, 120) !important;
 $color-primary-box-shadow : rgba(24, 127, 120, 0.25) !important;
+
 .icon-custom{
   color: $color-primary;
 
