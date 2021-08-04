@@ -39,14 +39,8 @@ const nextOfKinSchema = new Schema({
     relationship: {
         type: String,
         required: true
-    },
-    patients: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Patient'
-        }
-    ]
-},{timestamps: true});
+    }
+}, { timestamps: true });
 
 nextOfKinSchema.plugin(uniqueValidator);
 
