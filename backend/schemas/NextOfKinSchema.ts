@@ -15,11 +15,10 @@ type NextOfKin {
     phoneNo: String!,
     email: String!,
     relationship: String!,
-    patients: [Patient!]!
 }
 extend type Query{
     nextofkins: [NextOfKin]
-    nextofkin(id: String!): Guardian
+    nextofkin(id: String!): NextOfKin
 }
 extend type Mutation{
     createNextOfKin(
@@ -30,9 +29,7 @@ extend type Mutation{
     nationalID: String!,
     phoneNo: String!,
     email: String!,
-    relationship: String!,
-    # patients is a string coz we want the id only
-    patients: String!): NextOfKin,
+    relationship: String!) : NextOfKin
 
     updateNextOfKin(
     firstName: String!,
@@ -42,7 +39,6 @@ extend type Mutation{
     nationalID: String!,
     phoneNo: String!,
     email: String!,
-    relationship: String!,
-    patients: [String!]!): Guardian
+    relationship: String!): NextOfKin
 }
 `;
