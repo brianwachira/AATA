@@ -29,7 +29,7 @@ const Signup = () => {
             <main className="container-fluid vh-100">
                 <div className="row h-100">
                     <figure className="d-flex flex-column align-self-center justify-content-center">
-                        <i class="fa fa-medkit  fa-4x icon-custom text-center" aria-hidden="true"></i>
+                        <i className="fa fa-medkit  fa-4x icon-custom text-center" aria-hidden="true"></i>
                         {/* <img src="/Assets/images/aa.jpg" alt="" /> */}
                     </figure>
                     <div className="form">
@@ -41,7 +41,8 @@ const Signup = () => {
                                     type="text"
                                     {...register("firstName", {
                                         required: "Required"
-                                    })} required/>
+                                    })}
+                                     required/>
                                 <label htmlFor="lastname" className="form-label">First Name</label>
                             </div>
                             <div className="form-floating mb-2">
@@ -64,26 +65,26 @@ const Signup = () => {
                                     })} required/>
                                 <label htmlFor="Date" className="form-label">Date Of Birth</label>
                             </div>
-                            <label for="Gender" class="form-label">Gender</label><br />
-                            <div class="form-check form-check-inline">
+                            <label for="Gender" className="form-label">Gender</label><br />
+                            <div className="form-check form-check-inline">
                                 <input
                                     className="form-check-input" 
                                     type="radio" 
                                     name="gender" 
                                     value="m"
                                     {...register("gender")} />
-                                <label class="form-check-label" for="flexRadioDefault1">
+                                <label className="form-check-label" for="flexRadioDefault1">
                                     Male
                                 </label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mn-2">
                                 <input 
                                     className="form-check-input" 
                                     type="radio" 
                                     name="gender"
                                     value="f" 
                                     {...register("gender")} />
-                                <label class="form-check-label" for="flexRadioDefault2">
+                                <label className="form-check-label" for="flexRadioDefault2">
                                     Female
                                 </label>
                             </div>
