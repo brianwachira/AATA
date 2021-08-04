@@ -1,6 +1,5 @@
 import { UserInputError } from "apollo-server";
 import NextOfKin from "../models/NextOfKin";
-import Patient from "../models/Patients";
 import { nextofkin, NewNextOfKinEntry } from "../types";
 
 /**
@@ -14,24 +13,11 @@ import { nextofkin, NewNextOfKinEntry } from "../types";
  * @returns {nextofkin} created NextOfKin
  */
 
- export const createNextOfKin = async (args: NewNextOfKinEntry): Promise<nextofkin> => {
+export const createNextOfKin = async (args: NewNextOfKinEntry): Promise<nextofkin> => {
 
-    const patientExists = await Patient.findById(args.patients);
-
-    if (!patientExists) {
-        throw new UserInputError("Patient not available", { invalidArgs: args });
-    }
-
-    const patientsArray: Array<string> = [];
-
-    let nextofkin = new NextOfKin({ ...args, patients: patientsArray.concat(patientExists._id) });
+    const nextofkin = new NextOfKin(args);
     try {
-        const savedNextOfKin = await nextofkin.save();
-        nextofkin = savedNextOfKin;
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        patientExists.guardians = savedNextOfKin._id;
-
-        await patientExists.save();
+        await nextofkin.save();
     } catch (error) {
         throw new UserInputError(error.message, {
             invalidArgs: args,
@@ -46,7 +32,7 @@ import { nextofkin, NewNextOfKinEntry } from "../types";
  * @returns {nextOfKin} updated NextOfKin
  */
 
- export const updateNextofKin = async (args: nextofkin): Promise<nextofkin> => {
+export const updateNextofKin = async (args: nextofkin): Promise<nextofkin> => {
     let nextofkin = await NextOfKin.findById(args._id);
 
     if (!nextofkin) {
@@ -68,7 +54,7 @@ import { nextofkin, NewNextOfKinEntry } from "../types";
  * @returns {nextOfKin[]} list all of NextOfKins
  */
 
- export const getAllNextOfKins = async (): Promise<nextofkin[]> => {
+export const getAllNextOfKins = async (): Promise<nextofkin[]> => {
     const nextofkin: nextofkin[] = await NextOfKin.find();
 
     return nextofkin;
@@ -80,7 +66,7 @@ import { nextofkin, NewNextOfKinEntry } from "../types";
  * @returns {nextOfKin} NextOfKin
  */
 
- export const getNextOfKin = async (args: { id: string; }): Promise<nextofkin> => {
+export const getNextOfKin = async (args: { id: string; }): Promise<nextofkin> => {
     const nextofkin = await NextOfKin.findById(args);
 
     if (!nextofkin) {
