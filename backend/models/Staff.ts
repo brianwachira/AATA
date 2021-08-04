@@ -3,15 +3,15 @@ import { NewStaffEntry } from "../types";
 import uniqueValidator from 'mongoose-unique-validator';
 
 const staffSchema = new Schema({
-    firstName:{
-        type:String,
-        required: true
-    },
-    lastName:{
+    firstName: {
         type: String,
         required: true
     },
-    DOB:{
+    lastName: {
+        type: String,
+        required: true
+    },
+    DOB: {
         type: Date,
         required: true
     },
@@ -19,45 +19,44 @@ const staffSchema = new Schema({
         type: String,
         required: true
     },
-    nationalID:{
+    nationalID: {
         type: String,
         required: true,
         unique: true
     },
-    phoneNo:{
+    phoneNo: {
         type: String,
         required: true
     },
-    email:{
+    email: {
         type: String,
         required: true,
         unique: true
     },
-    staffType:{
+    staffType: {
         type: String,
         required: true,
     },
-    branch:[
+    branch: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Clinic'
         }
     ],
-    consultations:[
+    consultations: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Consultation'
         }
     ],
-    nextOfKin:[
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'NextOfKin'
-        }
-    ]
-}, {timestamps: true});
+    nextOfKin:
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'NextOfKin'
+    }
+}, { timestamps: true });
 
 staffSchema.plugin(uniqueValidator);
 
-const Staff = mongoose.model<NewStaffEntry>('Staff',staffSchema);
+const Staff = mongoose.model<NewStaffEntry>('Staff', staffSchema);
 export default Staff;
