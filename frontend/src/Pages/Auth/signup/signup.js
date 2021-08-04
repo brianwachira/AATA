@@ -41,8 +41,7 @@ const Signup = () => {
                                     type="text"
                                     {...register("firstName", {
                                         required: "Required"
-                                    })}
-                                     required/>
+                                    })} required/>
                                 <label htmlFor="lastname" className="form-label">First Name</label>
                             </div>
                             <div className="form-floating mb-2">
