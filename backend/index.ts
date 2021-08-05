@@ -14,7 +14,7 @@ dotenv.config();
 
 void app(parseString(process.env.MONGODB_URI));
 
-void apolloServer.listen().then(({ url }) => {
+void apolloServer.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
   logger.info(`Server ready at ${url}`);
 });
 

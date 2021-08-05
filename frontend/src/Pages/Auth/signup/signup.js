@@ -1,8 +1,11 @@
 import "./signup.scss"
-
+import { useState } from "react";
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { useMutation } from "@apollo/client";
+import { CREATE_DISPATCH_OFFICER } from "../../../graphql/mutations/createDispatchOfficer";
+import Notification from "../../../Components/Notification/Notification";
 const Signup = () => {
 
     const validationSchema = Yup.object().shape({
@@ -17,13 +20,24 @@ const Signup = () => {
             .required('Gender is required')
 
     })
+    const [errorMessage, setErrorMessage] = useState(null)
+    const [createDispatchOfficer] = useMutation(CREATE_DISPATCH_OFFICER, {
+        onError: (error) => {
+            console.error(error)
+            //setErrorMessage(error.errors[0].message);
+        }
+    });
 
     const { register, formState: { errors }, handleSubmit, watch } = useForm({
         resolver: yupResolver(validationSchema)
     });
     const onSubmit = async data => {
-        console.log(data)
-      };
+        //console.log(data.firstName)
+        const { firstName, lastName, dob, gender, id, phoneNo, email, password } = data;
+        console.log(lastName);
+        const savedDispatchOfficer = createDispatchOfficer({ variables: { firstName, lastName, dob, gender, id, phoneNo, email, password } });
+        console.log(savedDispatchOfficer);
+    };
     return (
         <>
             <main className="container-fluid vh-100">
@@ -32,8 +46,9 @@ const Signup = () => {
                         <i className="fa fa-medkit  fa-4x icon-custom text-center" aria-hidden="true"></i>
                         {/* <img src="/Assets/images/aa.jpg" alt="" /> */}
                     </figure>
+                    <Notification errorMessage={errorMessage} />
                     <div className="form">
-                    <h3 className="text-center mb-md-5">Sign Up</h3>
+                        <h3 className="text-center mb-md-5">Sign Up</h3>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-floating mb-2">
                                 <input
@@ -41,7 +56,7 @@ const Signup = () => {
                                     type="text"
                                     {...register("firstName", {
                                         required: "Required"
-                                    })} required/>
+                                    })} required />
                                 <label htmlFor="lastname" className="form-label">First Name</label>
                             </div>
                             <div className="form-floating mb-2">
@@ -50,7 +65,7 @@ const Signup = () => {
                                     type="text"
                                     {...register("lastName", {
                                         required: "Required"
-                                    })} required/>
+                                    })} required />
                                 <label htmlFor="firstname" className="form-label">Last Name</label>
                             </div>
                             <div className="form-floating mb-2">
@@ -61,29 +76,29 @@ const Signup = () => {
                                     id=""
                                     {...register("dob", {
                                         required: "Required"
-                                    })} required/>
+                                    })} required />
                                 <label htmlFor="Date" className="form-label">Date Of Birth</label>
                             </div>
-                            <label for="Gender" className="form-label">Gender</label><br />
+                            <label htmlFor="Gender" className="form-label">Gender</label><br />
                             <div className="form-check form-check-inline">
                                 <input
-                                    className="form-check-input" 
-                                    type="radio" 
-                                    name="gender" 
+                                    className="form-check-input"
+                                    type="radio"
+                                    name="gender"
                                     value="m"
                                     {...register("gender")} />
-                                <label className="form-check-label" for="flexRadioDefault1">
+                                <label className="form-check-label" htmlFor="flexRadioDefault1">
                                     Male
                                 </label>
                             </div>
-                            <div class="form-check form-check-inline mn-2">
-                                <input 
-                                    className="form-check-input" 
-                                    type="radio" 
+                            <div className="form-check form-check-inline mn-2">
+                                <input
+                                    className="form-check-input"
+                                    type="radio"
                                     name="gender"
-                                    value="f" 
+                                    value="f"
                                     {...register("gender")} />
-                                <label className="form-check-label" for="flexRadioDefault2">
+                                <label className="form-check-label" htmlFor="flexRadioDefault2">
                                     Female
                                 </label>
                             </div>
@@ -95,16 +110,16 @@ const Signup = () => {
                                     type="text"
                                     {...register("id", {
                                         required: "Required"
-                                    })}  required/>
+                                    })} required />
                                 <label htmlFor="firstname" className="form-label">National ID</label>
                             </div>
                             <div className="form-floating mb-2">
                                 <input
                                     className="form-control"
                                     type="text"
-                                    {...register("phone", {
+                                    {...register("phoneNo", {
                                         required: "Required"
-                                    })}  required/>
+                                    })} required />
                                 <label htmlFor="firstname" className="form-label">Phone Number</label>
                             </div>
                             <div className="form-floating mb-2">
@@ -113,7 +128,7 @@ const Signup = () => {
                                     type="email"
                                     {...register("email", {
                                         required: "Required"
-                                    })}  required/>
+                                    })} required />
                                 <label htmlFor="firstname" className="form-label">Email</label>
                             </div>
                             <div className="form-floating mb-2">

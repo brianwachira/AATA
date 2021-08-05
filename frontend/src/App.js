@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Redirect, useRouteMatch} from "react-router-dom"
+import { BrowserRouter, Switch, Route} from "react-router-dom"
 import Signup from "./Pages/Auth/signup/signup"
 import ComingSoon from "./Pages/ComingSoon/ComingSoon"
 

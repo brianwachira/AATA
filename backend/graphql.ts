@@ -9,6 +9,9 @@ import { schema } from "./schemas";
 const apolloServer = new ApolloServer({
     typeDefs: schema,
     resolvers,
+    introspection: true,  
+    playground: true, 
+    
 });
 
 export default apolloServer;
