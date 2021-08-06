@@ -16,11 +16,15 @@ const ComingSoon = () => {
                         <div className="comingsoon-text">
                             <h5 className='text-center'>This dashboard is under construction</h5>
                             <h6 className='text-center mb-5'>We are changing a few aesthetics so that you can have the best analysis experience. We will be back soon.</h6>
-                            <Link to='/auth/signup'>
+                            
                                 <div className="d-flex justify-content-center">
-                                    <button className="btn-signup">Sign Up</button>
+                                <Link to='/auth/signup'>
+                                    <button className="btn-signup me-2">Sign Up</button>
+                                </Link>
+                                <Link to='/auth/login'>
+                                    <button className="btn-signup">Log In</button>
+                                </Link>
                                 </div>
-                            </Link>
                         </div>
                     </div>
                     <div className="col-md-7 d-none d-md-block">
