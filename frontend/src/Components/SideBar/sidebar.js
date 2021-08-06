@@ -4,15 +4,15 @@ const SideBar = () => {
     return (
         <>
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-sm-start align-items-center" id="menu">
                     <li class="nav-item">
                         <a class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                        <i class="fa fa-hospital-o fa-1x" aria-hidden="true"></i><span class="ms-1 d-none d-sm-inline">Clinics</span>
                         </a>
                     </li>
                     <li>
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                        <i class="fa fa-line-chart fa-1x" aria-hidden="true"></i> <span class="ms-1 d-none d-sm-inline">Analytics</span> </a>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
                                 <a class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
@@ -24,7 +24,7 @@ const SideBar = () => {
                     </li>
                     <li>
                         <a class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                        <i class="fa fa-cogs" aria-hidden="true"></i><span class="ms-1 d-none d-sm-inline">Account</span></a>
                     </li>
                     <li>
                         <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
@@ -68,9 +68,9 @@ const SideBar = () => {
                         <span class="d-none d-sm-inline mx-1">loser</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item">New project...</a></li>
-                        <li><a class="dropdown-item">Settings</a></li>
-                        <li><a class="dropdown-item">Profile</a></li>
+                        <li><a class="dropdown-item">Clinics</a></li>
+                        <li><a class="dropdown-item">Analytics</a></li>
+                        <li><a class="dropdown-item">Account</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>

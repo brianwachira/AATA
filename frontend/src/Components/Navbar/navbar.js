@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import ProfileCard from "../ProfileCard/profilecard";
 const NavBar = () => {
 
     return (
@@ -21,7 +22,10 @@ const NavBar = () => {
                                 <a class="nav-link">Pricing</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                                <ProfileCard 
+                                    firstName = "Sandra"
+                                    lastName = "Mamai"
+                                    email= "smamai@accessafya.com"/>
                             </li>
                         </ul>
                     </div>
