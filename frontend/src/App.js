@@ -1,4 +1,5 @@
 import { BrowserRouter, Switch, Route} from "react-router-dom"
+import Analytics from "./Pages/Analytics/Analytics"
 import Login from "./Pages/Auth/login/login"
 import Signup from "./Pages/Auth/signup/signup"
 import ComingSoon from "./Pages/ComingSoon/ComingSoon"
@@ -16,8 +17,13 @@ function App() {
           <Route path="/auth/login">
            <Login/>
           </Route>
+          <Route path='/comingsoon'>
+            <ComingSoon/>
+          </Route>
+          <Route path='/analytics'>
+            <Analytics/>
+          </Route>
           <Route path='/'>
-            {/* <ComingSoon/> */}
             <Home/>
           </Route>
         </Switch>
