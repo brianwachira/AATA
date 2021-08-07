@@ -6,13 +6,13 @@ const Layout = (props) => {
     return (
         <>
             <main>
-                <NavBar />
                 <div className="container-fluid">
-                    <div className="row flex-nowrap">
-                        <div className="col-sm-auto bg-light sticky-top">
-                            <SideBar/>
+                    <div className="row">
+                        <div className="col-sm-auto px-0 bg-light sticky-top shadow">
+                            <SideBar />
                         </div>
-                        <div className="col py-3">
+                        <div className="col ps-0 pt-0 pe-0 py-3 min-vh-100">
+                            <NavBar />
                             {children}
                         </div>
                     </div>
