@@ -13,6 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(24, 127, 120, 0.25) !important;
 }
 
 // ====== Variables =====
@@ -21,13 +22,32 @@ body {
 $color-primary: #187f78 !important;
 $color-primary-rgba: rgb(24, 127, 120) !important;
 $color-primary-box-shadow : rgba(24, 127, 120, 0.25) !important;
+$color-black-custom:#212529 !important;
 
+.color-primary{
+  color: $color-primary;
+}
+.bg-primary{
+  opacity: 1;
+  background-color: $color-primary-rgba;
+}
+.btn-style-none{
+  background: inherit;
+  border: none;
+}
 .icon-custom{
   color: $color-primary;
+  cursor: pointer;
 
   &:hover{
-      color: black;
-      opacity: 0.8;
+      color: $color-black-custom;
+  }
+}
+.icon-sidebars{
+  color: $color-black-custom;
+  &:hover{
+    color: $color-primary;
+
   }
 }
 .form-control:focus{
@@ -39,7 +59,7 @@ $color-primary-box-shadow : rgba(24, 127, 120, 0.25) !important;
   border-color: $color-primary;
 }
 .btn-signup {
-  background: black;
+  background: $color-black-custom;
   color: white;
   width: 130.56px;
   height: 50px;
@@ -50,4 +70,10 @@ $color-primary-box-shadow : rgba(24, 127, 120, 0.25) !important;
     opacity: .8;
     color: white;
   }
+}
+.dropdown-toggle::after{
+  display: none;
+}
+.w-max-content{
+  width: max-content;
 }
