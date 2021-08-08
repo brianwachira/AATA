@@ -47,7 +47,7 @@ export const updateAdmin = async (args: admin): Promise<admin> => {
     const admin = await Admin.findOne({ email: args.email });
 
     if (!admin) {
-        throw new UserInputError("User is not available", { invalidArgs: args });
+        throw new UserInputError("Admin is not available", { invalidArgs: args });
     }
     admin.clinicsLaunched = args.clinicsLaunched;
 
@@ -79,10 +79,10 @@ export const getAllAdmins = async (): Promise<admin[]> => {
 
 export const getAdmin = async(args: { id: string; }): Promise<admin> => {
 
-    const admin = await Admin.findById(args);
+    const admin = await Admin.findById(args).populate('clinicsLaunched');
 
     if (!admin) {
-        throw new UserInputError("User is not available", { invalidArgs: args.id });
+        throw new UserInputError("Admin is not available", { invalidArgs: args.id });
     }
 
     return admin;

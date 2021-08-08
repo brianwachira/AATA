@@ -14,7 +14,9 @@ type Admin {
     phoneNo: String!,
     email: String!,
     password: String!,
-    clinicsLaunched:[Clinic]
+    clinicsLaunched:[Clinic],
+    created_at: String!,
+    updated_at: String!
 }
 extend type Query {
     admins: [Admin]
