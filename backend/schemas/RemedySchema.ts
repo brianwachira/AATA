@@ -5,7 +5,9 @@ type Remedy {
     id: String!,
     code: String!,
     name: String!,
-    description: String!
+    description: String!,
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query{
     remedies: [Remedy]

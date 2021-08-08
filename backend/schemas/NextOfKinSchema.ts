@@ -15,6 +15,8 @@ type NextOfKin {
     phoneNo: String!,
     email: String!,
     relationship: String!,
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query{
     nextofkins: [NextOfKin]

@@ -10,8 +10,8 @@ type Attendance {
     staff: Staff!,
     branch: Clinic!,
     isClockedOut: Boolean,
-    created_at: String,
-    updated_at: String
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query{
     allAttendance: [Attendance],

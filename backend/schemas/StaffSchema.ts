@@ -15,8 +15,10 @@ type Staff {
     email: String!,
     staffType: String!,
     branch:[Clinic],
-    consultations:[String],
-    nextOfKin:String    
+    consultations:[Consultation],
+    nextOfKin:[NextOfKin],
+    createdAt: String!,
+    updatedAt: String!   
 }
 extend type Query {
     staff: [Staff]

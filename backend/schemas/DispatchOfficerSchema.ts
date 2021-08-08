@@ -14,7 +14,9 @@ type DispatchOfficer {
     phoneNo: String!,
     email: String!,
     password: String!,
-    assessments:[String]
+    assessments:[String],
+    createdAt: String!,
+    updatedAt: String!
 }
 type Token{
     value: String!

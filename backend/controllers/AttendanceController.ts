@@ -1,13 +1,12 @@
-
-/**
- * @description holds crud operations for attendance 
- */
-
 import { UserInputError } from "apollo-server";
 import Attendance from "../models/Attendance";
 import Clinic from "../models/Clinics";
 import Staff from "../models/Staff";
 import { attendance, clinic, staff } from "../types";
+
+/**
+ * @description holds crud operations for attendance 
+ */
 
 /**
  * creates attendance

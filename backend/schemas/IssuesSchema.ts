@@ -7,7 +7,9 @@ type Issue {
     title: String!,
     description: String!,
     filedBy: DispatchOfficer!,
-    isSolved: Boolean!
+    isSolved: Boolean!,
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query {
     issues: [Issue],

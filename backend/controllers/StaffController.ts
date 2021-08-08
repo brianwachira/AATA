@@ -33,7 +33,7 @@ export const createStaff = async (args: NewStaffEntry): Promise<staff> => {
  */
 
 export const updateStaff = async (args: staff): Promise<staff> => {
-    let staff = await Staff.findOne({ email: args.email });
+    let staff = await Staff.findOne({ email: args.email }).populate('Clinic Consultation NextOfKin');
 
     if (!staff) {
         throw new UserInputError("Staff not available", { invalidArgs: args });
@@ -55,7 +55,7 @@ export const updateStaff = async (args: staff): Promise<staff> => {
  */
 
 export const getAllStaff = async(): Promise<staff[]> => {
-    const staff : staff[] = await Staff.find();
+    const staff : staff[] = await Staff.find().populate('Clinic Consultation NextOfKin');
 
     return staff;
 };
@@ -67,7 +67,7 @@ export const getAllStaff = async(): Promise<staff[]> => {
  */
 
  export const getStaff = async (args: { id: string; }): Promise<staff> => {
-    const staff = await Staff.findById(args);
+    const staff = await Staff.findById(args).populate('Clinic Consultation NextOfKin');
 
     if (!staff) {
         throw new UserInputError("Staff is not available", { invalidArgs: args.id });

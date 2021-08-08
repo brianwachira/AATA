@@ -1,6 +1,5 @@
 import { UserInputError } from "apollo-server";
 import Guardian from "../models/Guardians";
-import Patient from "../models/Patients";
 import { guardian, NewGuardianEntry } from "../types";
 
 /**
@@ -15,22 +14,10 @@ import { guardian, NewGuardianEntry } from "../types";
 
 export const createGuardian = async (args: NewGuardianEntry): Promise<guardian> => {
 
-    const patientExists = await Patient.findById(args.patients);
 
-    if (!patientExists) {
-        throw new UserInputError("Patient not available", { invalidArgs: args });
-    }
-
-    const patientsArray: Array<string> = [];
-
-    const guardian = new Guardian({ ...args, patients: patientsArray.concat(patientExists._id) });
+    let guardian = new Guardian(args);
     try {
-        const savedGuardian = await guardian.save();
-
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        patientExists.guardians = savedGuardian._id;
-
-        await patientExists.save();
+        guardian = await guardian.save();
     } catch (error) {
         throw new UserInputError(error.message, {
             invalidArgs: args,

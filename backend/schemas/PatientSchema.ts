@@ -16,8 +16,10 @@ type Patient {
     email: String,
     branchOfRegistry: Clinic!,
     guardian: Guardian,
-    nextOfKin:String,
-    consultations:[String]
+    nextOfKin:NextOfKin,
+    consultations:[Consultation],
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query {
     patients: [Patient]
@@ -34,7 +36,7 @@ extend type Mutation {
         email: String,
         branchOfRegistry: String!,
         guardian: String,
-        nextOfKin:String
+        nextOfKin:String!,
         consultations:[String]): Patient
     updatePatient(
         id: ID!,

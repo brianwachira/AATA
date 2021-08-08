@@ -10,6 +10,8 @@ type ConsultationRating {
     consultationID: Consultation!,
     rating: Int!,
     comment: String!,
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query{
     consultationRatings: [ConsultationRating]

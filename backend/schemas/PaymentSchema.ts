@@ -15,7 +15,9 @@ type Payment {
     Branch: Clinic!,
     amount: Float!,
     mode: MODE!,
-    description: String
+    description: String,
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query{
     payments: [Payment],

@@ -13,9 +13,9 @@ import { diagnosis, NewDiagnosisEntry } from "../types";
  */
 
 export const createDiagnosis = async (args: NewDiagnosisEntry): Promise<diagnosis> => {
-    const newDiagnosis = new Diagnosis(args);
+    let newDiagnosis = new Diagnosis(args);
     try {
-        await newDiagnosis.save();
+        newDiagnosis = await newDiagnosis.save();
     } catch (error) {
         throw new UserInputError(error.message, {
             invalidArgs: args
@@ -31,7 +31,7 @@ export const createDiagnosis = async (args: NewDiagnosisEntry): Promise<diagnosi
  */
 
 export const updateDiagnosis = async (args: diagnosis): Promise<diagnosis> => {
-    let diagnosisToUpdate = await Diagnosis.findById(args._id);
+    let diagnosisToUpdate = await Diagnosis.findById(args._id).populate('remedies');
 
     if (!diagnosisToUpdate) {
         throw new UserInputError("diagnosis is not available", { invalidArgs: args });
@@ -53,7 +53,7 @@ export const updateDiagnosis = async (args: diagnosis): Promise<diagnosis> => {
  */
 
 export const getAllDiagnosis = async (): Promise<diagnosis[]> => {
-    const Alldiagnosis: diagnosis[] = await Diagnosis.find();
+    const Alldiagnosis: diagnosis[] = await Diagnosis.find().populate('remedies');
     return Alldiagnosis;
 };
 
@@ -64,7 +64,7 @@ export const getAllDiagnosis = async (): Promise<diagnosis[]> => {
  */
 
 export const getDiagnosis = async (args: { id: string; }): Promise<diagnosis> => {
-    const singleDiagnosis = await Diagnosis.findById(args);
+    const singleDiagnosis = await Diagnosis.findById(args).populate('remedies');
     if (!singleDiagnosis) {
         throw new UserInputError('Diagnosis is not available', { invalidArgs: args.id });
     }

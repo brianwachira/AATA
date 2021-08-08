@@ -13,10 +13,10 @@ import { NewRemediesEntry, remedy } from "../types";
  */
 
 export const createRemedy = async (args: NewRemediesEntry): Promise<remedy> => {
-    const newremedy = new Remedy(args);
+    let newremedy = new Remedy(args);
 
     try {
-        await newremedy.save();
+        newremedy = await newremedy.save();
     } catch (error) {
         throw new UserInputError(error.message, {
             invalidArgs: args,
