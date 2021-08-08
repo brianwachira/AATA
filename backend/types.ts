@@ -115,11 +115,6 @@ export interface consultationRating extends timeStamps, Document {
     comment: string;
 }
 
-export interface payment extends timeStamps, Document {
-    consultationID: string;
-    branchID: string;
-    amount: number;
-}
 export interface issue extends timeStamps, Document {
     title: string;
     description: string;
@@ -128,7 +123,24 @@ export interface issue extends timeStamps, Document {
     isSolved: boolean;
 
 }
-
+export interface attendance extends Document {
+    staff: PopulatedDoc<staff & Document>;
+    branch: PopulatedDoc<clinic & Document>;
+    isClockedOut: boolean
+}
+enum Mode {
+    bank = 'BANK',
+    cash = 'CASH',
+    mobilemoney = 'MOBILEMONEY',
+    other = 'OTHER',
+}
+export interface payment extends Document {
+    consultation: PopulatedDoc<consultation & Document>;
+    branch: PopulatedDoc<clinic & Document>;
+    amount: number;
+    mode: Mode;
+    description: string;
+}
 
 export type NewDispatchOfficerEntry = Omit<dispatchOfficer, 'id' | 'createdAt' | 'updatedAt'>;
 export type NewClinicEntry = Omit<clinic, 'id' | 'createdAt' | 'updatedAt'>;
