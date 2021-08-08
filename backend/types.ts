@@ -110,7 +110,7 @@ export interface remedy extends timeStamps, Document {
 }
 
 export interface consultationRating extends timeStamps, Document {
-    consultationID: PopulatedDoc<consultation & Document>;
+    consultation: PopulatedDoc<consultation & Document>;
     rating: number;
     comment: string;
 }
