@@ -16,9 +16,13 @@ type DispatchOfficer {
     password: String!,
     assessments:[String]
 }
+type Token{
+    value: String!
+}
 extend type Query {
     dispatchOfficers: [DispatchOfficer]
     dispatchOfficer(id: String!): DispatchOfficer
+    me: DispatchOfficer
 }
 extend type Mutation {
     createDispatchOfficer(
@@ -41,5 +45,8 @@ extend type Mutation {
         email: String!,
         password: String!
         assessments:[String]): DispatchOfficer
+    login(
+        email: String!
+        password: String): Token
 }
 `;

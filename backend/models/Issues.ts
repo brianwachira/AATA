@@ -5,26 +5,30 @@ import { NewIssueEntry } from '../types';
 
 const issuesSchema = new Schema({
 
-    branchID : {
+    branch: {
         type: Schema.Types.ObjectId,
         ref: 'Clinic',
         required: true
     },
-    title : {
+    staff: {
+        type: Schema.Types.ObjectId,
+        ref: 'Staff'
+    },
+    title: {
         type: String,
         required: true
     },
-    description : {
+    description: {
         type: String,
         required: true
     },
-    filedBy : {
+    filedBy: {
         type: Schema.Types.ObjectId,
         ref: 'DispatchOfficer',
         required: true
     },
-    isSolved : {
-        type : Boolean,
+    isSolved: {
+        type: Boolean,
         default: false
     }
 }, { timestamps: true });
