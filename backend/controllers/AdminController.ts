@@ -25,9 +25,9 @@ export const createAdmin = async (args: NewAdminEntry): Promise<admin> => {
 
     //eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const passwordHash : string= parseString(await bcrypt.hash(args.password, saltRounds));
-    const admin = new Admin({...args,password: passwordHash});
+    let admin = new Admin({...args,password: passwordHash});
     try {
-        await admin.save();
+        admin = await admin.save();
     } catch (error) {
         throw new UserInputError(error.message, {
             invalidArgs: args,
