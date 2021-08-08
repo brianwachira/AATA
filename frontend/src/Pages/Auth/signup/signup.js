@@ -1,12 +1,11 @@
 import "./signup.scss"
-import { useState } from "react";
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useMutation } from "@apollo/client";
-import { CREATE_DISPATCH_OFFICER } from "../../../graphql/mutations/createDispatchOfficer";
-import Notification from "../../../Components/Notification/Notification";
-const Signup = () => {
+import { CREATE_DISPATCH_OFFICER } from "../../../graphql/mutations";
+import { Link } from "react-router-dom";
+const Signup = ({ setMessage, setTitle }) => {
 
     const validationSchema = Yup.object().shape({
         password: Yup.string()
@@ -20,11 +19,15 @@ const Signup = () => {
             .required('Gender is required')
 
     })
-    const [errorMessage, setErrorMessage] = useState(null)
     const [createDispatchOfficer] = useMutation(CREATE_DISPATCH_OFFICER, {
         onError: (error) => {
-            console.error(error)
-            //setErrorMessage(error.errors[0].message);
+            setMessage(error.message);
+            setTitle('Error')
+            setTimeout(() => {
+                setTitle(null)
+                setMessage(null)
+
+            }, 6000)
         }
     });
 
@@ -32,11 +35,16 @@ const Signup = () => {
         resolver: yupResolver(validationSchema)
     });
     const onSubmit = async data => {
-        //console.log(data.firstName)
         const { firstName, lastName, dob, gender, id, phoneNo, email, password } = data;
-        console.log(lastName);
-        const savedDispatchOfficer = createDispatchOfficer({ variables: { firstName, lastName, dob, gender, id, phoneNo, email, password } });
-        console.log(savedDispatchOfficer);
+        createDispatchOfficer({ variables: { firstName, lastName, dob, gender, id, phoneNo, email, password } });
+        setMessage('Account Created Successfully ! Redirecting...');
+        setTitle('Account Created Successfully')
+        setTimeout(() => {
+            setTitle(null)
+            setMessage(null)
+            window.location.href = `${window.location.protocol}//${window.location.host}/auth/login`
+        }, 2000)
+
     };
     return (
         <>
@@ -46,7 +54,6 @@ const Signup = () => {
                         <i className="fa fa-medkit  fa-4x icon-custom text-center" aria-hidden="true"></i>
                         {/* <img src="/Assets/images/aa.jpg" alt="" /> */}
                     </figure>
-                    <Notification errorMessage={errorMessage} />
                     <div className="form">
                         <h3 className="text-center mb-md-5">Sign Up</h3>
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -147,6 +154,7 @@ const Signup = () => {
                                 <label htmlFor="confirmpassword" className="form-label">Confirm Password</label>
                             </div>
                             {errors.confirmPassword && <p className="text-danger">{errors.confirmPassword.message}</p>}
+                            <p className="mt-2">Already have an account? <Link to="/auth/login">Sign In</Link></p>
                             <div className="d-flex justify-content-center mt-md-5">
                                 <button type="submit" className="w-50 btn btn-signup">Sign Up</button>
                             </div>
