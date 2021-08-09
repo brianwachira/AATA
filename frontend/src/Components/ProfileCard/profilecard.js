@@ -2,7 +2,7 @@
 import './profilecard.scss'
 
 const ProfileCard = (props) => {
-    const {firstName, lastName, email, url} = props;
+    const {firstName, lastName, email} = props;
     return (
         <>
             <div className="d-flex">
