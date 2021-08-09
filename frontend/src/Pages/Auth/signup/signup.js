@@ -31,7 +31,7 @@ const Signup = ({ setMessage, setTitle }) => {
         }
     });
 
-    const { register, formState: { errors }, handleSubmit, watch } = useForm({
+    const { register, formState: { errors }, handleSubmit } = useForm({
         resolver: yupResolver(validationSchema)
     });
     const onSubmit = async data => {
@@ -117,17 +117,21 @@ const Signup = ({ setMessage, setTitle }) => {
                                     type="text"
                                     {...register("id", {
                                         required: "Required"
-                                    })} required />
-                                <label htmlFor="firstname" className="form-label">National ID</label>
+                                    })} required
+                                    pattern="^\d{2}\d{2}\d{2}\d{2}$"
+                                    placeholder="0XXXXXXXXX" />
+                                <label htmlFor="firstname" className="form-label">National ID (format: XXXXXXXX)</label>
                             </div>
                             <div className="form-floating mb-2">
                                 <input
                                     className="form-control"
-                                    type="text"
+                                    type="tel"
                                     {...register("phoneNo", {
                                         required: "Required"
-                                    })} required />
-                                <label htmlFor="firstname" className="form-label">Phone Number</label>
+                                    })} required 
+                                    pattern="^\d{4}\d{3}\d{3}$"
+                                    placeholder="0XXXXXXXXX"/>
+                                <label htmlFor="firstname" className="form-label">Phone Number (format: 0XXXXXXXXX)</label>
                             </div>
                             <div className="form-floating mb-2">
                                 <input
