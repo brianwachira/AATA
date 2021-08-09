@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client"
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { BrowserRouter, Switch, Route, Redirect} from "react-router-dom"
 import Notification from "./Components/Notification/Notification"
 import { ALL_CLINICS, ALL_ISSUES, ME } from "./graphql/queries"
 import Analytics from "./Pages/Analytics/Analytics"
@@ -12,12 +12,12 @@ import Home from "./Pages/Home/Home"
 
 function App() {
 
-  const[isLoggedIn, setLoggedIn] = useState(false)
-    
+  const [isLoggedIn, setLoggedIn] = useState(false)
+
   useEffect(() => {
     const loggedIn = window.localStorage.getItem('token')
     console.log(loggedIn)
-    if(loggedIn) {
+    if (loggedIn) {
       setLoggedIn(true)
     }
   }, [])
@@ -28,33 +28,33 @@ function App() {
   const issuesResult = useQuery(ALL_ISSUES)
   const meResult = useQuery(ME)
   return (
-    <div>
+    <>
       <BrowserRouter>
-        <Notification message={errorMessage} title={title}/>
+        <Notification message={errorMessage} title={title} />
         <Switch>
           <Route path="/auth/signup">
-           <Signup setTitle={setTitle} setMessage={setErrorMessage}/>
+            <Signup setTitle={setTitle} setMessage={setErrorMessage} />
           </Route>
           <Route path="/auth/login">
-           <Login setTitle={setTitle} setMessage={setErrorMessage}/>
+          {isLoggedIn ? <Redirect to="/" /> : <Login setTitle={setTitle} setMessage={setErrorMessage} />}
           </Route>
           <Route path='/comingsoon'>
-            <ComingSoon/>
+            <ComingSoon />
           </Route>
           <Route exact path='/analytics'>
-               
-            <Analytics
-               allClinics={clinicsResult} 
-               allIssues={issuesResult}
-               meResult={meResult}/>
+            {isLoggedIn === false && <Redirect to="/auth/login" /> }
+              <Analytics
+                allClinics={clinicsResult}
+                allIssues={issuesResult}
+                meResult={meResult} />
+
           </Route>
           <Route exact path='/'>
-                
-            <Home meResult={meResult}/>
+            {isLoggedIn === false ? <Redirect to="/auth/login" /> : <Home meResult={meResult} />}
           </Route>
         </Switch>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 
