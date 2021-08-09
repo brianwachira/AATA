@@ -42,15 +42,15 @@ function App() {
             <ComingSoon/>
           </Route>
           <Route exact path='/analytics'>
-               {!isLoggedIn ?  <Redirect to="/auth/login" /> : 
+               
             <Analytics
                allClinics={clinicsResult} 
                allIssues={issuesResult}
-               meResult={meResult}/>}
+               meResult={meResult}/>
           </Route>
           <Route exact path='/'>
-               {!isLoggedIn ?  <Redirect to="/auth/login" /> : 
-            <Home meResult={meResult}/>}
+                
+            <Home meResult={meResult}/>
           </Route>
         </Switch>
       </BrowserRouter>
