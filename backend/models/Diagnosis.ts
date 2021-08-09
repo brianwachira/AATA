@@ -19,7 +19,7 @@ const DiagnosisSchema = new Schema({
     remedies: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'remedy',
+            ref: 'Remedies',
         }
     ]
 

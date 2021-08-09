@@ -13,9 +13,9 @@ import { NewPatientEntry, patient } from "../types";
  */
 
 export const createPatient = async (args: NewPatientEntry): Promise<patient> => {
-    const patient = new Patient(args);
+    let patient = new Patient(args);
     try {
-        await patient.save();
+        patient = await patient.save();
     } catch (error) {
         throw new UserInputError(error.message, {
             invalidArgs: args,

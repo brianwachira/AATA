@@ -1,80 +1,50 @@
+import { Link } from 'react-router-dom';
 import './sidebar.scss'
 const SideBar = () => {
-
+    const logout = () => {
+        window.localStorage.removeItem('token')
+        window.location.reload()
+    }
     return (
         <>
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
-                        </a>
+            <div className="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+                <Link to="/" className="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+                    <i className="fa fa-medkit  fs-1 icon-custom text-center" aria-hidden="true"></i>
+                </Link>
+                <ul className="nav nav-custom nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between justify-content-sm-center w-100 px-2 align-items-center">
+                    <li className="nav-item">
+                        <Link to="/" className="nav-link py-3 px-2" title="Clinics" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                            <i className="fa fa-home h2 icon-sidebars" aria-hidden="true"></i>
+                        </Link>
+                        <Link to="/comingsoon" className="nav-link py-3 px-2" title="Clinics" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                            <i className="fa fa-hospital-o h2 icon-sidebars" aria-hidden="true"></i>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                            </li>
-                            <li>
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                            </li>
-                        </ul>
+                        <Link to="/analytics" className="nav-link py-3 px-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Analytics">
+                            <i className="fa fa-line-chart h2 icon-sidebars" aria-hidden="true"></i>
+                        </Link>
                     </li>
                     <li>
-                        <a class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                        <Link to="/comingsoon" className="nav-link py-3 px-2" title="Settings" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Settings">
+                            <i className="fa fa-cogs h2 icon-sidebars" aria-hidden="true"></i>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                            </li>
-                            <li>
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-                            </li>
-                            <li>
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                            </li>
-                            <li>
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                            </li>
-                            <li>
-                                <a class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                        <Link to="/comingsoon" className="nav-link py-3 px-2" title="Conversations" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Conversations">
+                            <i className="fa fa-commenting-o h2 icon-sidebars" aria-hidden="true"></i>
+                        </Link>
                     </li>
                 </ul>
-                <hr />
-                <div class="dropdown pb-4">
-                    <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle" />
-                        <span class="d-none d-sm-inline mx-1">loser</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item">New project...</a></li>
-                        <li><a class="dropdown-item">Settings</a></li>
-                        <li><a class="dropdown-item">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item">Sign out</a></li>
+                <div className="dropdown">
+                    <Link to="#" className="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i className="fa fa-user h2 icon-sidebars" aria-hidden="true"></i>
+                    </Link>
+                    <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+                        <li><Link className="dropdown-item" to="#">New project...</Link></li>
+                        <li><Link className="dropdown-item" to="#">Settings</Link></li>
+                        <li><Link className="dropdown-item" to="#">Profile</Link></li>
+                        <li><div className="dropdown-item" onClick={() => logout()}>Sign out</div></li>
                     </ul>
                 </div>
             </div>

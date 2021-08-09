@@ -15,9 +15,9 @@ import { nextofkin, NewNextOfKinEntry } from "../types";
 
 export const createNextOfKin = async (args: NewNextOfKinEntry): Promise<nextofkin> => {
 
-    const nextofkin = new NextOfKin(args);
+    let nextofkin = new NextOfKin(args);
     try {
-        await nextofkin.save();
+        nextofkin = await nextofkin.save();
     } catch (error) {
         throw new UserInputError(error.message, {
             invalidArgs: args,
@@ -70,7 +70,7 @@ export const getNextOfKin = async (args: { id: string; }): Promise<nextofkin> =>
     const nextofkin = await NextOfKin.findById(args);
 
     if (!nextofkin) {
-        throw new UserInputError("Guardian is not available", { invalidArgs: args.id });
+        throw new UserInputError("Nextofkin is not available", { invalidArgs: args.id });
     }
 
     return nextofkin;

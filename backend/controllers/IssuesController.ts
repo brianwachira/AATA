@@ -12,9 +12,9 @@ import { issue, NewIssueEntry } from "../types";
  */
 
 export const createIssue = async (args: NewIssueEntry): Promise<issue> => {
-    const newIssue = new Issue(args);
+    let newIssue = new Issue(args);
     try {
-        await newIssue.save();
+        newIssue = await newIssue.save();
     } catch (error) {
         throw new UserInputError(error.message, {
             invalidArgs: args
@@ -53,7 +53,7 @@ export const updateIssue = async (args: issue): Promise<issue> => {
  */
 
 export const getIssues = async (): Promise<issue[]> => {
-    const allIssues: issue[] = await Issue.find();
+    const allIssues: issue[] = await Issue.find().populate('branch staff filedBy');
     return allIssues;
 };
 
@@ -64,7 +64,7 @@ export const getIssues = async (): Promise<issue[]> => {
  */
 
 export const getIssue = async (args: { id: string; }): Promise<issue> => {
-    const singleIssue = await Issue.findById(args);
+    const singleIssue = await Issue.findById(args).populate('Clinic Staff DispatchOfficer');
     if (!singleIssue) {
         throw new UserInputError('Issues is not available', { invalidArgs: args.id });
     }

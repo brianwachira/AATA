@@ -15,7 +15,8 @@ type Guardian {
     phoneNo: String!,
     email: String!,
     relationship: String!,
-    patients: [Patient!]!
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query{
     guardians: [Guardian]
@@ -30,9 +31,7 @@ extend type Mutation{
     nationalID: String!,
     phoneNo: String!,
     email: String!,
-    relationship: String!,
-    # patients is a string coz we want the id only
-    patients: String!): Guardian,
+    relationship: String!): Guardian,
 
     updateGuardian(
     firstName: String!,
@@ -42,7 +41,6 @@ extend type Mutation{
     nationalID: String!,
     phoneNo: String!,
     email: String!,
-    relationship: String!,
-    patients: [String!]!): Guardian
+    relationship: String!): Guardian
 }
 `;

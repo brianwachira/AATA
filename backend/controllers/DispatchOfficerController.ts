@@ -3,6 +3,7 @@ import DispatchOfficer from "../models/DipatchOfficers";
 import { dispatchOfficer, NewDispatchOfficerEntry } from "../types";
 import bcrypt from 'bcrypt';
 import { parseString } from "../typeGuards";
+import jwt from 'jsonwebtoken';
 //createDispatchOfficer, updateDispatchOfficer
 //getDispatchOfficer, getAllDispatchOfficers
 
@@ -78,12 +79,37 @@ export const getAllDispatchOfficers = async (): Promise<dispatchOfficer[]> => {
 
 export const getDispatchOfficer = async (args: { id: string; }): Promise<dispatchOfficer> => {
     const dispatchOfficer = await DispatchOfficer.findById(args);
-
-
-
     if (!dispatchOfficer) {
         throw new UserInputError("User is not available", { invalidArgs: args.id });
     }
 
     return dispatchOfficer;
+};
+interface jwtresponse {
+    value: string
+}
+export const login = async (args: { email: string, password: string }): Promise<jwtresponse> => {
+    const dispatchOfficer = await DispatchOfficer.findOne({ email: args.email });
+
+    if (!dispatchOfficer) {
+        throw new UserInputError("Account not available", { invalidArgs: args.email });
+    }
+
+    const passwordCorrect = dispatchOfficer === null
+        ? false
+        : await bcrypt.compare(args.password, dispatchOfficer.password);
+
+    if (!(dispatchOfficer && passwordCorrect)) {
+        throw new UserInputError("wrong credentials", { invalidArgs: args.email });
+    }
+    const dispatchOfficerForToken = {
+        firstName: dispatchOfficer.firstName,
+        lastName: dispatchOfficer.lastName,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        id: dispatchOfficer._id
+    };
+    const JWT_SECRET = 'afyakilamahali';
+    const token: string = jwt.sign(dispatchOfficerForToken, JWT_SECRET);
+    return { value: token };
+
 };

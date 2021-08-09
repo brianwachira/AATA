@@ -14,7 +14,7 @@ import { consultation, consultationRating, NewConsultationRatingEntry } from "..
  */
 
 export const createConsultationRating = async (args: NewConsultationRatingEntry): Promise<consultationRating> => {
-    const consultationExists: consultation = await Consultation.findById(args.consultationID) as consultation;
+    const consultationExists: consultation = await Consultation.findById(args.consultation) as consultation;
     if (!consultationExists) {
         throw new UserInputError("Consultation not available", { invalidArgs: args });
     }
@@ -56,7 +56,7 @@ export const updateConsultationRating = async (args: consultationRating): Promis
  */
 
 export const getAllConsultationRatings = async (): Promise<consultationRating[]> => {
-    const consultationRatings: consultationRating[] = await ConsultationRating.find({}).populate('consultations');
+    const consultationRatings: consultationRating[] = await ConsultationRating.find({}).populate('Consultation');
     return consultationRatings;
 };
 
@@ -67,7 +67,7 @@ export const getAllConsultationRatings = async (): Promise<consultationRating[]>
  */
 
 export const getConsultationRating = async (args: { id: string; }): Promise<consultationRating> => {
-    const consultationRating = await ConsultationRating.findById(args).populate('consultations');
+    const consultationRating = await ConsultationRating.findById(args).populate('Consultation');
 
     if (!consultationRating) {
         throw new UserInputError("Consultation Ratings is not available", { invalidArgs: args.id });

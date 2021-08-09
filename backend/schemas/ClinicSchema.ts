@@ -10,6 +10,8 @@ type Clinic {
     name: String!,
     location: String!,
     createdBy: Admin!,
+    createdAt: String!,
+    updatedAt: String!,
 }
 extend type Query {
     clinics: [Clinic],

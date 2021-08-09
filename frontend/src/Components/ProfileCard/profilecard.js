@@ -1,18 +1,20 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import './profilecard.scss'
 
-const profilecard = (props) => {
-    const {firstName, lastName, email} = props;
+const ProfileCard = (props) => {
+    const {firstName, lastName, email, url} = props;
     return (
         <>
-            <div className="d-flex align-items-center">
-                <div className="flex-grow-1 ms-3">
-                 <h4><small>{firstName} {lastName}</small></h4>
+            <div className="d-flex">
+                <div className="flex-grow-1 ms-3 me-2">
+                 <h5 className="mb-0"><small>{firstName} {lastName}</small></h5>
                  <p><small>{email}</small></p>
                 </div>
-                <div className="flex-shrink-0">
-                    <img src="" alt="Profile Image" />
+                <div className="flex-shrink-0 me-3">
+                <i className="fa fa-user h2 icon-sidebars" aria-hidden="true"></i>                    
                 </div>
             </div>
         </>
     )
 }
+export default ProfileCard;

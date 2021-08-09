@@ -10,7 +10,9 @@ type Consultation {
     patient: Patient!,
     staff: [Staff!]!,
     branch: Clinic!,
-    diagnosis: [String!]!,
+    diagnosis: [Diagnosis!]!,
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query{
     consultations: [Consultation]

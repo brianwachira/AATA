@@ -5,7 +5,7 @@
 
 
 /**
- * checks if a valur is a string
+ * checks if a value is a string
  * @param text unknown
  * @returns {typeofString} String
  */
@@ -15,7 +15,7 @@ const isString = (text: unknown): text is string => {
 
 /**
  * returns string
- * @param anyString unkniwn
+ * @param anyString unknown
  * @returns {string} String
  */
 export const parseString = (anyString: unknown): string => {

@@ -40,15 +40,9 @@ const guardianSchema = new Schema({
         type: String,
         required: true
     },
-    patients: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Patient'
-        }
-    ]
 },{timestamps: true});
 
 guardianSchema.plugin(uniqueValidator);
 
-const Guardian = mongoose.model<NewGuardianEntry>('Guardians', guardianSchema);
+const Guardian = mongoose.model<NewGuardianEntry>('Guardian', guardianSchema);
 export default Guardian;

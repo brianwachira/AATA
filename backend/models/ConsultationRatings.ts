@@ -1,10 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 import { NewConsultationRatingEntry } from "../types";
-import uniqueValidator from 'mongoose-unique-validator';
 
 const consultationRatingSchema = new Schema({
 
-    consultationID: {
+    consultation: {
         type: Schema.Types.ObjectId,
         ref: 'Consultation',
         required: true
@@ -19,7 +18,6 @@ const consultationRatingSchema = new Schema({
     }
 }, { timestamps: true });
 
-consultationRatingSchema.plugin(uniqueValidator);
 
 const ConsultationRating = mongoose.model<NewConsultationRatingEntry>('ConsultationRatings', consultationRatingSchema);
 

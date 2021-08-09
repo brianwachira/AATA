@@ -2,11 +2,15 @@ import { gql } from "apollo-server";
 
 export const IssuesSchema = gql`
 type Issue {
-    branchID: Clinic!,
+    id: String!,
+    branch: Clinic!,
+    staff: Staff,
     title: String!,
     description: String!,
     filedBy: DispatchOfficer!,
-    isSolved: Boolean!
+    isSolved: Boolean!,
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query {
     issues: [Issue],
@@ -14,13 +18,15 @@ extend type Query {
 }
 extend type Mutation{
     createIssue(
-        branchID: String!,
+        branch: String!,
+        staff: String,
         title: String!,
         description: String!,
         filedBy: String!,
         isSolvSed: Boolean!): Issue,
     updateIssue(
-        branchID: String!,
+        branch: String!,
+        staff: String,
         title: String!,
         description: String!,
         filedBy: String!,

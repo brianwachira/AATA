@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:backend": "cd backend && npm run dev",
-    "dev:frontend": "cd frontend && npm start"
+    "dev:frontend": "cd frontend && npm start",
+    "dev" : "cd backend && npm run dev && wait-on http://localhost:3001 && cd ../frontend && npm start"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/brianwachira/aata/issues"
   },
-  "homepage": "https://github.com/brianwachira/aata#readme"
+  "homepage": "https://github.com/brianwachira/aata#readme",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "npm-run-all": "^4.1.5",
+    "wait-on": "^6.0.0"
+  }
 }

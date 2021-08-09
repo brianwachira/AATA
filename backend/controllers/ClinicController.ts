@@ -42,7 +42,7 @@ export const createClinic = async (args: NewClinicEntry): Promise<clinic> => {
  */
 
 export const updateClinic = async (args: clinic): Promise<clinic> => {
-    let clinic = await Clinic.findOne({ name: args.name });
+    let clinic = await Clinic.findOne({ name: args.name }).populate('createdBy');
     if (!clinic) {
         throw new UserInputError("Clinic not available", { invalidArgs: args });
     }
@@ -72,7 +72,7 @@ export const getAllClinics = async (): Promise<clinic[]> => {
  */
 
 export const getClinic = async (args: { id: string; }): Promise<clinic> => {
-    const clinic = await Clinic.findById(args);
+    const clinic = await Clinic.findById(args).populate('createdBy');
 
     if (!clinic) {
         throw new UserInputError("Clinic is not available", { invalidArgs: args.id });

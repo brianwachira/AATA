@@ -5,7 +5,9 @@ type Diagnosis {
     code: String!,
     name: String!,
     description: String!,
-    remedies: [Diagnosis!]
+    remedies: [Diagnosis!],
+    createdAt: String!,
+    updatedAt: String!
 }
 extend type Query{
     allDiagnosis: [Diagnosis],
