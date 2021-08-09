@@ -77,3 +77,6 @@ $color-black-custom:#212529 !important;
 .w-max-content{
   width: max-content;
 }
+.dropdown-item:active{
+  background-color: $color-black-custom;
+}

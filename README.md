@@ -1,6 +1,4 @@
-# aata : Access Afya Technical Assessment Test Dashboard
-
-# Access Afya Technical Assessment Dashboard
+# Access Afya Technical Assessment Test Dashboard
 
 > This is an analytics dashboard for the measurement and optimization of key metrics that are fundamental for operational efficiency of the healthcare clinics spread country-wide.
 
@@ -183,6 +181,11 @@ frontend
 ### Known bugs
  - The database transactions (especially create patient) need to be optimized 
 
+## commit headers
+- [FEATURE] - New Feature
+- [ENHANCEMENT] - Improvement of an existing feature
+- [FIX] - bug fixes of existing features
+
 ## Support and contact details
 Contact me on brianwachira7@gmail.com for any comments, reviews or advice.
 
@@ -193,7 +196,4 @@ This project is licensed under the terms of the **MIT** license.
 >You can check out the full license [here](https://github.com/brianwachira/aata/blob/master/LICENSE.md)  
 
 Copyright (c) **Brian Wachira**
-## commit headers
-- [FEATURE] - New Feature
-- [ENHANCEMENT] - Improvement of an existing feature
-- [FIX] - bug fixes of existing features
+
