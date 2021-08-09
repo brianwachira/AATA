@@ -11,7 +11,7 @@ const ProfileCard = (props) => {
                  <p><small>{email}</small></p>
                 </div>
                 <div className="flex-shrink-0 me-3">
-                    <img src="https://github.com/mdo.png" alt="Profile Image" width="50" height="50" className="rounded-circle" />
+                <i className="fa fa-user h2 icon-sidebars" aria-hidden="true"></i>                    
                 </div>
             </div>
         </>

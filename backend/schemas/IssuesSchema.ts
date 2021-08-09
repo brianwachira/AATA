@@ -2,6 +2,7 @@ import { gql } from "apollo-server";
 
 export const IssuesSchema = gql`
 type Issue {
+    id: String!,
     branch: Clinic!,
     staff: Staff,
     title: String!,

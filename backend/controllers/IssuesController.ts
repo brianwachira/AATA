@@ -53,7 +53,7 @@ export const updateIssue = async (args: issue): Promise<issue> => {
  */
 
 export const getIssues = async (): Promise<issue[]> => {
-    const allIssues: issue[] = await Issue.find().populate('Clinic Staff DispatchOfficer');
+    const allIssues: issue[] = await Issue.find().populate('branch staff filedBy');
     return allIssues;
 };
 

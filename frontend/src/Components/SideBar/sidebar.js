@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import './sidebar.scss'
 const SideBar = () => {
-
+    const logout = () => {
+        window.localStorage.removeItem('token')
+        window.location.reload()
+    }
     return (
         <>
             <div className="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
@@ -10,22 +13,25 @@ const SideBar = () => {
                 </Link>
                 <ul className="nav nav-custom nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between justify-content-sm-center w-100 px-2 align-items-center">
                     <li className="nav-item">
-                        <Link to="/comingsoon" className="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                        <Link to="/" className="nav-link py-3 px-2" title="Clinics" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                            <i className="fa fa-home h2 icon-sidebars" aria-hidden="true"></i>
+                        </Link>
+                        <Link to="/comingsoon" className="nav-link py-3 px-2" title="Clinics" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                             <i className="fa fa-hospital-o h2 icon-sidebars" aria-hidden="true"></i>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/analytics" className="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                        <Link to="/analytics" className="nav-link py-3 px-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Analytics">
                             <i className="fa fa-line-chart h2 icon-sidebars" aria-hidden="true"></i>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/comingsoon" className="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                        <Link to="/comingsoon" className="nav-link py-3 px-2" title="Settings" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Settings">
                             <i className="fa fa-cogs h2 icon-sidebars" aria-hidden="true"></i>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/comingsoon" className="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
+                        <Link to="/comingsoon" className="nav-link py-3 px-2" title="Conversations" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Conversations">
                             <i className="fa fa-commenting-o h2 icon-sidebars" aria-hidden="true"></i>
                         </Link>
                     </li>
@@ -38,6 +44,7 @@ const SideBar = () => {
                         <li><Link className="dropdown-item" to="#">New project...</Link></li>
                         <li><Link className="dropdown-item" to="#">Settings</Link></li>
                         <li><Link className="dropdown-item" to="#">Profile</Link></li>
+                        <li><div className="dropdown-item" onClick={() => logout()}>Sign out</div></li>
                     </ul>
                 </div>
             </div>

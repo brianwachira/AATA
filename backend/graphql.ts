@@ -32,7 +32,9 @@ const apolloServer = new ApolloServer({
                 auth.substring(7), parseString(process.env.JWT_SECRET)
             );
             const decodedTokens =  decodedToken as decodedTokenType;
+            //console.log(decodedTokens);
             const currentDispatchOfficer = await DispatchOfficer.findById(decodedTokens.id);
+            //console.log(currentDispatchOfficer);
             return { currentDispatchOfficer };
         }
     },

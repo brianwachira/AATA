@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom"
 import ProfileCard from "../ProfileCard/profilecard";
 import './navbar.scss'
-const NavBar = () => {
-
+const NavBar = (props) => {
+    const {meResult} = props;
+    console.log(meResult)
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
                     <Link to='/'  className="navbar-brand">
-                        <button type="button" className="btn btn-outline-dark">Add Assessment <i className="fa fa-plus" aria-hidden="true"></i></button>
+                        <button type="button" className="btn btn-outline-dark disabled">Add Assessment <i className="fa fa-plus" aria-hidden="true"></i></button>
                     </Link>
                     <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" className="rounded-circle d-block d-lg-none" />
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,9 +25,9 @@ const NavBar = () => {
                             </li>
                             <li className="nav-item d-none d-lg-block">
                                 <ProfileCard
-                                    firstName="Sandra"
-                                    lastName="Mamai"
-                                    email="smamai@accessafya.com" />
+                                    firstName={meResult && meResult.firstName}
+                                    lastName={meResult && meResult.lastName}
+                                    email={meResult && meResult.email} />
                             </li>
                         </ul>
                     </div>

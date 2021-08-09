@@ -2,7 +2,7 @@ import NavBar from "../Navbar/navbar";
 import SideBar from "../SideBar/sidebar";
 
 const Layout = (props) => {
-    const { children } = props;
+    const { children, meResult } = props;
     return (
         <>
             <main>
@@ -12,7 +12,7 @@ const Layout = (props) => {
                             <SideBar />
                         </div>
                         <div className="col ps-0 pt-0 pe-0 py-3 min-vh-100">
-                            <NavBar />
+                            <NavBar meResult={meResult}/>
                             {children}
                         </div>
                     </div>

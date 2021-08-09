@@ -24,7 +24,7 @@ const issuesSchema = new Schema({
     },
     filedBy: {
         type: Schema.Types.ObjectId,
-        ref: 'DispatchOfficer',
+        ref: 'DispatchOfficers',
         required: true
     },
     isSolved: {

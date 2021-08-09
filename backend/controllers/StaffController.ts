@@ -14,9 +14,9 @@ import { NewStaffEntry, staff } from "../types";
 
 export const createStaff = async (args: NewStaffEntry): Promise<staff> => {
 
-    const staff = new Staff(args);
+    let staff = new Staff(args);
     try {
-        await staff.save();
+        staff = await staff.save();
     } catch (error) {
         throw new UserInputError(error.message, {
             invalidArgs: args,
@@ -33,7 +33,7 @@ export const createStaff = async (args: NewStaffEntry): Promise<staff> => {
  */
 
 export const updateStaff = async (args: staff): Promise<staff> => {
-    let staff = await Staff.findOne({ email: args.email }).populate('Clinic Consultation NextOfKin');
+    let staff = await Staff.findOne({ email: args.email }).populate('branch consultations nextofkin');
 
     if (!staff) {
         throw new UserInputError("Staff not available", { invalidArgs: args });
@@ -55,7 +55,7 @@ export const updateStaff = async (args: staff): Promise<staff> => {
  */
 
 export const getAllStaff = async(): Promise<staff[]> => {
-    const staff : staff[] = await Staff.find().populate('Clinic Consultation NextOfKin');
+    const staff : staff[] = await Staff.find().populate('branch consultations nextofkin');
 
     return staff;
 };
@@ -67,7 +67,7 @@ export const getAllStaff = async(): Promise<staff[]> => {
  */
 
  export const getStaff = async (args: { id: string; }): Promise<staff> => {
-    const staff = await Staff.findById(args).populate('Clinic Consultation NextOfKin');
+    const staff = await Staff.findById(args).populate('branch consultations nextofkin');
 
     if (!staff) {
         throw new UserInputError("Staff is not available", { invalidArgs: args.id });
