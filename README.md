@@ -193,7 +193,7 @@ Contact me on brianwachira7@gmail.com for any comments, reviews or advice.
 
 This project is licensed under the terms of the **MIT** license.
 
->You can check out the full license [here](https://github.com/brianwachira/aata/blob/master/LICENSE.md)  
+>You can check out the full license [here](https://github.com/brianwachira/aata/blob/main/LICENSE.md)  
 
 Copyright (c) **Brian Wachira**
 
