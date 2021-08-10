@@ -76,7 +76,13 @@ const Analytics = ({ allClinics, allIssues,meResult }) => {
             title: 'Reported Issues',
         }
     ]
-
+    const addIssue = [
+        {
+            id: 1,
+            title: 'Add Issue',
+            name: 'Add Issue'
+        }
+    ]
     return (
         <>
             <Layout meResult={meResult.data.me && meResult.data.me}>
@@ -90,11 +96,12 @@ const Analytics = ({ allClinics, allIssues,meResult }) => {
                             <main className="row  mb-3">
                                 <div className="col">
                                     <Card title="issues">
-                                        <div className="row overflow-auto flex-row">
+                                        <div className="row overflow-auto flex-row ms-1 mb-3">
                                             {allIssues.data && allIssues.data.issues.map((issue) =>
-                                                <ButtonDropDown object={issue} className='w-max-content me-2' />
+                                                <ButtonDropDown object={issue} className='w-max-content me-2 btn btn-outline-dark' />
                                             )}
                                         </div>
+                                            <button type="button mt-n5 ms-1" className="btn btn-outline-dark ">Add Issue <i className="fa fa-plus" aria-hidden="true"></i></button>
                                     </Card>
                                 </div>
                             </main>

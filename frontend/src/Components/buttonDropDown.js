@@ -8,10 +8,10 @@ const ButtonDropDown = (props) => {
 
     return (
         <>
-            <div className={`${className} d-flex justify-content-between`}>
+            <div className={`${className} d-flex justify-content-between mb-3`}>
 
                 <button type="button" className=" btn-style-none"><span className="text-left">{object.name}{object.title}</span>
-                {branch && <p><small>{branch.name}</small></p>}</button>
+                {branch && <p className="mb-0"><small>{branch.name}</small></p>}</button>
                 
                 <button type="button" className=" btn-style-none dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                     <i className="fa fa-ellipsis-v text-right" aria-hidden="true"></i>
