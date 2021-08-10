@@ -20,7 +20,7 @@ const authLink = setContext((_, { headers }) => {
   }
 })
 
-const httpLink = new HttpLink({ uri: 'http://localhost:3001/'  || 'https://aata-backend.herokuapp.com/'})
+const httpLink = new HttpLink({ uri: 'https://aata-backend.herokuapp.com/'})
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: authLink.concat(httpLink)

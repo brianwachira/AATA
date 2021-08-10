@@ -3,7 +3,6 @@ import ProfileCard from "../ProfileCard/profilecard";
 import './navbar.scss'
 const NavBar = (props) => {
     const {meResult} = props;
-    console.log(meResult)
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
