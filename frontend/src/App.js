@@ -46,7 +46,9 @@ function App() {
               <Analytics
                 allClinics={clinicsResult}
                 allIssues={issuesResult}
-                meResult={meResult} />
+                meResult={meResult}
+                setTitle={setTitle} 
+                setMessage={setErrorMessage}  />
 
           </Route>
           <Route exact path='/'>

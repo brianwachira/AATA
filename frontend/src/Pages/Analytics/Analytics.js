@@ -4,12 +4,18 @@ import Card from "../../Components/Card/Card"
 import ButtonDropDown from "../../Components/buttonDropDown"
 import MiniChart from "../../Components/MiniChart";
 import Table from "../../Components/Table/table";
-const Analytics = ({ allClinics, allIssues,meResult }) => {
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import IssueModal from "../../Components/IssueModal";
+import { useMutation } from "@apollo/client";
+import { ADD_ISSUE } from "../../graphql/mutations";
+import { useEffect } from "react";
+import { useRef } from 'react';
+const Analytics = (props) => {
 
-    if (!meResult.data) {
-        return (<>loading...</>)
-    }
-
+    const { setMessage, setTitle, allClinics, allIssues, meResult } = props;
+    const closeModal = useRef(null);
     const dummydata = [
         {
             name: "Page A",
@@ -76,13 +82,56 @@ const Analytics = ({ allClinics, allIssues,meResult }) => {
             title: 'Reported Issues',
         }
     ]
-    const addIssue = [
-        {
-            id: 1,
-            title: 'Add Issue',
-            name: 'Add Issue'
+
+    
+    const validationSchema = Yup.object().shape({
+        title: Yup.string()
+            .required('Title is required')
+            .min(5, 'Title must be atleast 5 characters'),
+    })
+
+    const { register, formState: { errors }, handleSubmit } = useForm({
+        resolver: yupResolver(validationSchema)
+    });
+
+    // create issue
+    const [createIssue,result] = useMutation(ADD_ISSUE, {
+        onError: (error) => {
+            setMessage(error.message);
+            setTitle('Error')
+            setTimeout(() => {
+                setTitle(null)
+                setMessage(null)
+            }, 6000)
         }
-    ]
+    });
+
+    useEffect(() => {
+        if(result.data) {
+            setMessage('Save succesfull!');
+            setTitle('Save succesfull')
+            setTimeout(() => {
+                setTitle(null)
+                setMessage(null)
+                // Simulate a click to refresh page
+                closeModal.current?.click();
+            }, 2000)
+
+        }
+    })
+    const onSubmit = async data => {
+        const { branch, title, description } = data;
+        const filedBy = meResult.data.me.id;
+        const isSolved = false;
+        createIssue({ variables: { branch, title, description, filedBy, isSolved } });
+
+
+    }
+
+
+    if (!meResult.data) {
+        return (<>loading...</>)
+    }
     return (
         <>
             <Layout meResult={meResult.data.me && meResult.data.me}>
@@ -96,12 +145,18 @@ const Analytics = ({ allClinics, allIssues,meResult }) => {
                             <main className="row  mb-3">
                                 <div className="col">
                                     <Card title="issues">
-                                        <div className="row overflow-auto flex-row ms-1 mb-3">
+                                        <div className="row overflow-auto flex-row ms-1 mb-2">
                                             {allIssues.data && allIssues.data.issues.map((issue) =>
-                                                <ButtonDropDown object={issue} className='w-max-content me-2 mb-3 ms-3 btn-custom' />
+                                                <ButtonDropDown object={issue} className='w-max-content me-2 mb-3 btn-custom' key={issue.id}/>
                                             )}
                                         </div>
-                                        <button type="button mt-n5 ms-2" className="btn btn-outline-dark disabled">Add Issue <i className="fa fa-plus" aria-hidden="true"></i></button>
+                                        <IssueModal
+                                            allClinics={allClinics}
+                                            register={register}
+                                            onSubmit={onSubmit}
+                                            errors={errors}
+                                            handleSubmit={handleSubmit}
+                                            closeModal={closeModal} />
                                     </Card>
                                 </div>
                             </main>
@@ -131,14 +186,14 @@ const Analytics = ({ allClinics, allIssues,meResult }) => {
                             <main className="row mb-3">
                                 <div className="col">
                                     <Card title="Patients">
-                                        <Table tableHeaders={tableHeaders}/>
+                                        <Table tableHeaders={tableHeaders} />
                                     </Card>
                                 </div>
                             </main>
                             <main className="row">
                                 <div className="col">
                                     <Card title="Staff">
-                                        <Table tableHeaders={tableHeaders}/>
+                                        <Table tableHeaders={tableHeaders} />
                                     </Card>
                                 </div>
                             </main>

@@ -21,3 +21,13 @@ mutation login($email: String!, $password: String) {
   }
 }
 `
+export const ADD_ISSUE = gql`
+mutation ($branch: String!, $title: String!, $description: String!, $filedBy: String!, $isSolved: Boolean!, $staff: String) {
+  createIssue(branch: $branch, title: $title, description: $description, filedBy: $filedBy, isSolvSed: $isSolved, staff: $staff) {
+    id
+    title
+    description
+    isSolved
+    
+  }
+}`
