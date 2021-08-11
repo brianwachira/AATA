@@ -2,7 +2,7 @@
 
 > This is an analytics dashboard for the measurement and optimization of key metrics that are fundamental for operational efficiency of the healthcare clinics spread country-wide.
 
-![screenshot](./screenshot-1.png)
+![screenshot](./screenshot-2.png)
 
 The project uses Apollo Server + MongoDB for the Backend GraphQL API & ReactJS + Apollo Client for the Frontend.
 
