@@ -10,7 +10,6 @@ const NavBar = (props) => {
                     <Link to='/'  className="navbar-brand">
                         <button type="button" className="btn btn-outline-dark disabled">Add Assessment <i className="fa fa-plus" aria-hidden="true"></i></button>
                     </Link>
-                    <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" className="rounded-circle d-block d-lg-none" />
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

@@ -98,10 +98,10 @@ const Analytics = ({ allClinics, allIssues,meResult }) => {
                                     <Card title="issues">
                                         <div className="row overflow-auto flex-row ms-1 mb-3">
                                             {allIssues.data && allIssues.data.issues.map((issue) =>
-                                                <ButtonDropDown object={issue} className='w-max-content me-2 btn btn-outline-dark' />
+                                                <ButtonDropDown object={issue} className='w-max-content me-2 mb-3 ms-3 btn-custom' />
                                             )}
                                         </div>
-                                            <button type="button mt-n5 ms-1" className="btn btn-outline-dark ">Add Issue <i className="fa fa-plus" aria-hidden="true"></i></button>
+                                        <button type="button mt-n5 ms-2" className="btn btn-outline-dark disabled">Add Issue <i className="fa fa-plus" aria-hidden="true"></i></button>
                                     </Card>
                                 </div>
                             </main>

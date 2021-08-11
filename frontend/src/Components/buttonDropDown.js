@@ -17,7 +17,7 @@ const ButtonDropDown = (props) => {
                     <i className="fa fa-ellipsis-v text-right" aria-hidden="true"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><Link className="dropdown-item" to={object.id}>View More</Link></li>
+                    <li><Link className="dropdown-item" to="/comingsoon">View More</Link></li>
                 </ul>
             </div>
         </>

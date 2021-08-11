@@ -13,9 +13,6 @@ const SideBar = () => {
                 </Link>
                 <ul className="nav nav-custom nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between justify-content-sm-center w-100 px-2 align-items-center">
                     <li className="nav-item">
-                        <Link to="/" className="nav-link py-3 px-2" title="Clinics" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-                            <i className="fa fa-home h2 icon-sidebars" aria-hidden="true"></i>
-                        </Link>
                         <Link to="/comingsoon" className="nav-link py-3 px-2" title="Clinics" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                             <i className="fa fa-hospital-o h2 icon-sidebars" aria-hidden="true"></i>
                         </Link>
