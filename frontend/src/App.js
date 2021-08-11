@@ -8,6 +8,7 @@ import Login from "./Pages/Auth/login/login"
 import Signup from "./Pages/Auth/signup/signup"
 import ComingSoon from "./Pages/ComingSoon/ComingSoon"
 import Home from "./Pages/Home/Home"
+import PageNotFound from "./Pages/404/PageNotFound"
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
           <Route exact path='/'>
             {isLoggedIn === false ? <Redirect to="/auth/login" /> : <Home meResult={meResult} />}
           </Route>
+          <Route component={PageNotFound}/>
         </Switch>
       </BrowserRouter>
     </>
