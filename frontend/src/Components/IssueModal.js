@@ -1,5 +1,5 @@
 import React from "react";
-const IssueModal = ({ closeModal, allClinics, register, handleSubmit, onSubmit, errors }) => {
+const IssueModal = ({ isDisabled, closeModal, allClinics, register, handleSubmit, onSubmit, errors }) => {
 
     return (
         <>
@@ -17,14 +17,17 @@ const IssueModal = ({ closeModal, allClinics, register, handleSubmit, onSubmit, 
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="modal-body">
                                 <label htmlFor="name" className="form-label">Branch *</label>
-                                <select className="form-select mb-3" aria-label="Default select example">
+                                <select
+                                    className="form-select mb-3"
+                                    aria-label="Default select example"
+                                    {...register("branch", {
+                                        required: "Required"
+                                    })}>
                                     {allClinics.data && allClinics.data.clinics.map((clinic) =>
                                         <option
                                             key={clinic.id}
                                             value={clinic.id}
-                                            {...register("branch", {
-                                                required: "Required"
-                                            })}>{clinic.name}</option>
+                                        >{clinic.name}</option>
                                     )}
                                 </select>
                                 <label htmlFor="name" className="form-label">Staff *</label>
@@ -50,7 +53,7 @@ const IssueModal = ({ closeModal, allClinics, register, handleSubmit, onSubmit, 
                                     required />
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" ref={closeModal}>Cancel</button>
-                                    <button type="submit" className="btn btn-success">Save Issue</button>
+                                    <button type="submit" className="btn btn-success" disabled={isDisabled}>Save Issue</button>
                                 </div>
                             </div>
                         </form>
