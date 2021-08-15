@@ -16,7 +16,7 @@ const Home = ({meResult}) => {
 
             <Link to="/analytics"><button className="btn btn-signup">Analytics</button></Link>
             </div>
-            <img src={comingsoon} alt={comingsoon} className="img-fluid mx-auto position-absolute"/>
+            <img src={comingsoon} alt={comingsoon} className="img-fluid mx-auto position-absolute top-50 start-50 translate-middle"/>
         </div>
     </Layout>
     </>
