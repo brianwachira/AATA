@@ -5,8 +5,9 @@ import * as Yup from 'yup';
 import { useMutation } from "@apollo/client";
 import { CREATE_DISPATCH_OFFICER } from "../../../graphql/mutations";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 const Signup = ({ setMessage, setTitle }) => {
-
+    const [isDisabled, setisDisabled] = useState(false);
     const validationSchema = Yup.object().shape({
         password: Yup.string()
             .required('Password is required')
@@ -19,31 +20,39 @@ const Signup = ({ setMessage, setTitle }) => {
             .required('Gender is required')
 
     })
-    const [createDispatchOfficer] = useMutation(CREATE_DISPATCH_OFFICER, {
+    const [createDispatchOfficer, result] = useMutation(CREATE_DISPATCH_OFFICER, {
         onError: (error) => {
             setMessage(error.message);
             setTitle('Error')
             setTimeout(() => {
                 setTitle(null)
                 setMessage(null)
-
+                setisDisabled(false)
             }, 6000)
-        }
+        },
     });
 
+    useEffect(() => {
+        if (result.data) {
+            setMessage('Account Created Successfully ! Redirecting..');
+            setTitle('Account Created Successfully')
+            setTimeout(() => {
+                setTitle(null)
+                setMessage(null)
+                window.location.href = `${window.location.protocol}//${window.location.host}/auth/login`
+            }, 2000)
+        }
+    }, [result.data, setMessage, setTitle])
     const { register, formState: { errors }, handleSubmit } = useForm({
         resolver: yupResolver(validationSchema)
     });
     const onSubmit = async data => {
+
+        //set alert
+        setMessage('Please wait...');
+        setTitle('Saving');
         const { firstName, lastName, dob, gender, id, phoneNo, email, password } = data;
         createDispatchOfficer({ variables: { firstName, lastName, dob, gender, id, phoneNo, email, password } });
-        setMessage('Account Created Successfully ! Redirecting...');
-        setTitle('Account Created Successfully')
-        setTimeout(() => {
-            setTitle(null)
-            setMessage(null)
-            window.location.href = `${window.location.protocol}//${window.location.host}/auth/login`
-        }, 2000)
 
     };
     return (
@@ -128,9 +137,9 @@ const Signup = ({ setMessage, setTitle }) => {
                                     type="tel"
                                     {...register("phoneNo", {
                                         required: "Required"
-                                    })} required 
+                                    })} required
                                     pattern="^\d{4}\d{3}\d{3}$"
-                                    placeholder="0XXXXXXXXX"/>
+                                    placeholder="0XXXXXXXXX" />
                                 <label htmlFor="firstname" className="form-label">Phone Number (format: 0XXXXXXXXX)</label>
                             </div>
                             <div className="form-floating mb-2">
@@ -160,7 +169,7 @@ const Signup = ({ setMessage, setTitle }) => {
                             {errors.confirmPassword && <p className="text-danger">{errors.confirmPassword.message}</p>}
                             <p className="mt-2">Already have an account? <Link to="/auth/login">Sign In</Link></p>
                             <div className="d-flex justify-content-center mt-md-5">
-                                <button type="submit" className="w-50 btn btn-signup">Sign Up</button>
+                                <button type="submit" className="w-50 btn btn-signup" disabled={isDisabled}>Sign Up</button>
                             </div>
                         </form>
                     </div>

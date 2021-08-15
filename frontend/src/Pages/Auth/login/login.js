@@ -2,12 +2,12 @@ import "./login.scss"
 import { useForm } from 'react-hook-form';
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../../graphql/mutations";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = ({ setTitle, setMessage, setToken }) => {
     const { register, handleSubmit } = useForm();
-
+    const [isDisabled, setisDisabled] = useState(false);
     const [login, result] = useMutation(LOGIN, {
         onError: (error) => {
             setTitle("Error")
@@ -15,7 +15,7 @@ const Login = ({ setTitle, setMessage, setToken }) => {
             setTimeout(() => {
                 setTitle(null)
                 setMessage(null)
-
+                setisDisabled(false)
             }, 6000)
         }
     })
@@ -34,6 +34,12 @@ const Login = ({ setTitle, setMessage, setToken }) => {
         }
     }, [result.data, setMessage, setTitle])
     const onSubmit = async data => {
+        //disable login button
+        setisDisabled(false);
+
+        //set alert
+        setMessage('Please wait...');
+        setTitle('Loading');
         const { email, password } = data;
 
         login({
@@ -64,7 +70,7 @@ const Login = ({ setTitle, setMessage, setToken }) => {
                             <label htmlFor="password" className="form-label">Password</label>
                         </div>
                         <p className="mt-2">Don't have an account? <Link to="/auth/signup">Sign Up</Link></p>
-                        <button type="submit" className="w-50 btn btn-signup mt-2">Login</button>
+                        <button type="submit" className="w-50 btn btn-signup mt-2" disabled={isDisabled}>Login</button>
                     </form>
                 </main>
             </section>
