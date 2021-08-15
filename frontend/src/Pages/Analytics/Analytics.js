@@ -10,10 +10,11 @@ import * as Yup from 'yup';
 import IssueModal from "../../Components/IssueModal";
 import { useMutation } from "@apollo/client";
 import { ADD_ISSUE } from "../../graphql/mutations";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRef } from 'react';
+import { ALL_ISSUES } from "../../graphql/queries";
 const Analytics = (props) => {
-
+    const [isDisabled, setisDisabled] = useState(false);
     const { setMessage, setTitle, allClinics, allIssues, meResult } = props;
     const closeModal = useRef(null);
     const dummydata = [
@@ -83,7 +84,7 @@ const Analytics = (props) => {
         }
     ]
 
-    
+
     const validationSchema = Yup.object().shape({
         title: Yup.string()
             .required('Title is required')
@@ -95,31 +96,38 @@ const Analytics = (props) => {
     });
 
     // create issue
-    const [createIssue,result] = useMutation(ADD_ISSUE, {
+    const [createIssue, result] = useMutation(ADD_ISSUE, {
+        refetchQueries: [
+            ALL_ISSUES, // DocumentNode object parsed with gql
+        ],
         onError: (error) => {
             setMessage(error.message);
             setTitle('Error')
             setTimeout(() => {
                 setTitle(null)
                 setMessage(null)
+                setisDisabled(false)
             }, 6000)
         }
     });
 
     useEffect(() => {
-        if(result.data) {
+        if (result.data) {
             setMessage('Save succesfull!');
             setTitle('Save succesfull')
             setTimeout(() => {
                 setTitle(null)
                 setMessage(null)
-                // Simulate a click to refresh page
+                setisDisabled(false)
+                // Simulate a click to close modal
                 closeModal.current?.click();
             }, 2000)
 
         }
-    })
+    }, [result.data, setMessage, setTitle])
     const onSubmit = async data => {
+        //disable save button
+        setisDisabled(!isDisabled)
         const { branch, title, description } = data;
         const filedBy = meResult.data.me.id;
         const isSolved = false;
@@ -147,7 +155,7 @@ const Analytics = (props) => {
                                     <Card title="issues">
                                         <div className="row overflow-auto flex-row ms-1 mb-2">
                                             {allIssues.data && allIssues.data.issues.map((issue) =>
-                                                <ButtonDropDown object={issue} className='w-max-content me-2 mb-3 btn-custom' key={issue.id}/>
+                                                <ButtonDropDown object={issue} className='w-max-content me-2 mb-3 btn-custom' key={issue.id} />
                                             )}
                                         </div>
                                         <IssueModal
@@ -156,7 +164,8 @@ const Analytics = (props) => {
                                             onSubmit={onSubmit}
                                             errors={errors}
                                             handleSubmit={handleSubmit}
-                                            closeModal={closeModal} />
+                                            closeModal={closeModal}
+                                            isDisabled={isDisabled} />
                                     </Card>
                                 </div>
                             </main>
