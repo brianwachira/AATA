@@ -15,7 +15,7 @@ import { useRef } from 'react';
 import { ALL_ISSUES } from "../../graphql/queries";
 const Analytics = (props) => {
     const [isDisabled, setisDisabled] = useState(false);
-    const { setMessage, setTitle, allClinics, allIssues, meResult } = props;
+    const { setMessage, setTitle, allClinics, allIssues, meResult, clinicWithIssues } = props;
     const closeModal = useRef(null);
     const dummydata = [
         {
@@ -147,7 +147,7 @@ const Analytics = (props) => {
                     <h2 className="py-4">Analytics</h2>
                     <div className="row">
                         <div className="col-12 col-sm-3 col-xl-auto px-sm-2 px-0 bg-light d-flex rounded sticky-top overflow-auto">
-                            <InnerSideBar allClinics={allClinics && allClinics} />
+                            <InnerSideBar allClinics={allClinics && allClinics} clinicWithIssues={clinicWithIssues && clinicWithIssues}/>
                         </div>
                         <div className="col d-flex  px-sm-4 px-0  flex-column h-sm-100">
                             <main className="row  mb-3">

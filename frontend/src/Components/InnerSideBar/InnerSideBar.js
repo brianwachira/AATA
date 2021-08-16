@@ -3,7 +3,7 @@ import ButtonDropDown from '../buttonDropDown';
 import './InnerSideBar.scss'
 const InnerSideBar = (props) => {
 
-    const { allClinics } = props;
+    const { allClinics,clinicWithIssues } = props;
 
     if (!allClinics.data) {
         return (<>loading...</>)
@@ -15,7 +15,7 @@ const InnerSideBar = (props) => {
                     <small>VISITS</small>
                 </NavLink>
                 <ul className="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
-                    {allClinics.data && allClinics.data.clinics.map((clinic) =>
+                    {clinicWithIssues && clinicWithIssues.map((clinic) =>
                         <li 
                             key={clinic.id}
                             className="nav-item dropdown btn-group mb-3 w-100">

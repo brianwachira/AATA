@@ -24,9 +24,17 @@ function App() {
   const [errorMessage, setErrorMessage] = useState(null)
   const [title, setTitle] = useState(null)
 
+  //get all clinics, issues and current user data
   const clinicsResult = useQuery(ALL_CLINICS)
   const issuesResult = useQuery(ALL_ISSUES)
   const meResult = useQuery(ME)
+
+  // get clinics with issues
+  const clinicWithIssues = issuesResult.data && (issuesResult.data['issues'].map(issue => issue.branch));
+  
+  //filter repeated clinics
+  const uniqueClinics = clinicWithIssues && ([...new Set(clinicWithIssues.map(clinic => clinic))]);
+  
   return (
     <>
       <BrowserRouter>
@@ -48,7 +56,8 @@ function App() {
                 allIssues={issuesResult}
                 meResult={meResult}
                 setTitle={setTitle} 
-                setMessage={setErrorMessage}  />
+                setMessage={setErrorMessage}
+                clinicWithIssues={uniqueClinics}  />
 
           </Route>
           <Route exact path='/'>
